@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# EDITAR: reemplaza el dominio por el real
+Sitemap: https://www.tudominio.com/sitemap.xml
