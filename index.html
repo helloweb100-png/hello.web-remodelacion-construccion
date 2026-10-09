@@ -3,47 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <meta name="color-scheme" content="dark">
-    <meta name="theme-color" content="#0a0d11">
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#120d0f">
 
     <!-- ============================================================
          SEO BASICO
          EDITAR: reemplaza "www.tudominio.com" por el dominio real en
          canonical, og:url, og:image, twitter:image y los datos JSON-LD.
     ============================================================ -->
-    <title>Construcción y Remodelación | Constructora de obra nueva, remodelación y acabados</title>
-    <meta name="description" content="Constructora especializada en obra nueva, remodelación y acabados. Supervisión en sitio, presupuesto por escrito y entrega puntual. Cotiza tu proyecto hoy.">
-    <meta name="keywords" content="constructora, construcción de casas, remodelación de casas, remodelación de departamentos, acabados, obra negra, ampliaciones, urbanización, excavación, presupuesto de obra">
-    <meta name="author" content="Construcción y Remodelación">
+    <title>Construcciones Martinez | Constructora en Querétaro: obra nueva, remodelación y acabados</title>
+    <meta name="description" content="Constructora en Querétaro especializada en obra nueva, remodelación y acabados. Supervisión en sitio, presupuesto por escrito y entrega puntual. Cotiza tu proyecto hoy.">
+    <meta name="keywords" content="constructora en Querétaro, construcción de casas, remodelación de casas, remodelación de departamentos, acabados, obra negra, ampliaciones, urbanización, excavación, presupuesto de obra">
+    <meta name="author" content="Construcciones Martinez">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <link rel="canonical" href="https://www.tudominio.com/">
 
     <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website">
     <meta property="og:locale" content="es_MX">
-    <meta property="og:site_name" content="Construcción y Remodelación">
-    <meta property="og:title" content="Construcción y Remodelación | Obra nueva, remodelación y acabados">
+    <meta property="og:site_name" content="Construcciones Martinez">
+    <meta property="og:title" content="Construcciones Martinez | Obra nueva, remodelación y acabados en Querétaro">
     <meta property="og:description" content="Obra nueva, remodelación y acabados con supervisión en sitio y presupuesto claro. De los planos a las llaves, sin sorpresas.">
     <meta property="og:url" content="https://www.tudominio.com/">
     <meta property="og:image" content="https://www.tudominio.com/img/web/hero-1200.webp">
     <meta property="og:image:alt" content="Obra en construcción con muros de block y estructura de acero">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Construcción y Remodelación | Obra nueva, remodelación y acabados">
+    <meta name="twitter:title" content="Construcciones Martinez | Obra nueva, remodelación y acabados en Querétaro">
     <meta name="twitter:description" content="Obra nueva, remodelación y acabados con supervisión en sitio y presupuesto claro.">
     <meta name="twitter:image" content="https://www.tudominio.com/img/web/hero-1200.webp">
 
-    <!-- Favicon (marca en SVG inline) -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='11' fill='%230a0d11'/%3E%3Cg fill='none' stroke='%23efa133' stroke-width='3.2' stroke-linejoin='miter'%3E%3Cpath d='M8 37 24 10l16 27'/%3E%3Cpath d='M16 37l8-14 8 14'/%3E%3C/g%3E%3C/svg%3E">
+    <!-- Favicon e iconos (sello del logotipo) -->
+    <link rel="icon" type="image/png" sizes="32x32" href="img/brand/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="img/brand/favicon-64.png">
+    <link rel="apple-touch-icon" href="img/brand/apple-touch-icon.png">
 
-    <!-- Rendimiento: fuentes propias (sin servidores externos) y carga prioritaria del hero -->
+    <!-- Rendimiento: fuentes propias (sin servidores externos) y carga prioritaria del hero y del loader -->
+    <link rel="preload" href="fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="fonts/geist-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" as="image" type="image/webp" href="img/brand/anillo-blanco.webp">
+    <link rel="preload" as="image" type="image/webp" href="img/brand/emblema-blanco.webp">
     <link rel="preload" as="image" type="image/avif" fetchpriority="high"
           imagesrcset="img/web/hero-1200.avif 1200w, img/web/hero-1920.avif 1920w" imagesizes="100vw">
 
     <!-- Estado inicial: marca que JS esta disponible y bloquea el scroll mientras carga -->
     <script>document.documentElement.classList.add('js','is-loading');</script>
-    <noscript><style>#loader{display:none!important}html.is-loading{overflow:auto!important}.js .reveal{opacity:1!important;transform:none!important}</style></noscript>
+    <noscript><style>#loader{display:none!important}html.is-loading{overflow:auto!important}.js .reveal,.js .hero-line-i{opacity:1!important;transform:none!important}.js .sw-i{transform:none!important}.js .wipe::after{display:none!important}.js img[data-fade]{opacity:1!important}</style></noscript>
 
     <link rel="stylesheet" href="style.css">
     <script src="vendor/lenis.min.js" defer></script>
@@ -51,21 +55,23 @@
 
     <!-- ============================================================
          DATOS ESTRUCTURADOS (Schema.org)
-         EDITAR: telefono, dominio, direccion y redes sociales reales.
+         EDITAR: telefono, dominio, calle y redes sociales reales.
     ============================================================ -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "GeneralContractor",
-      "name": "Construcción y Remodelación",
-      "description": "Constructora especializada en obra nueva, remodelación, acabados, urbanización y excavación, con supervisión en sitio y presupuesto por escrito.",
+      "name": "Construcciones Martinez",
+      "description": "Constructora en Querétaro especializada en obra nueva, remodelación, acabados, urbanización y excavación, con supervisión en sitio y presupuesto por escrito.",
+      "slogan": "Construcción, obras y desarrollo",
       "url": "https://www.tudominio.com/",
       "image": "https://www.tudominio.com/img/web/hero-1200.webp",
+      "logo": "https://www.tudominio.com/img/brand/sello-guinda-640.webp",
       "telephone": "+520000000000",
       "email": "contacto@tudominio.com",
       "priceRange": "$$",
-      "address": { "@type": "PostalAddress", "addressCountry": "MX" },
-      "areaServed": { "@type": "Country", "name": "México" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Querétaro", "addressRegion": "Querétaro", "addressCountry": "MX" },
+      "areaServed": { "@type": "AdministrativeArea", "name": "Querétaro" },
       "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
         "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
@@ -102,7 +108,7 @@
         { "@type": "Question", "name": "¿Puedo ver los avances de mi obra?",
           "acceptedAnswer": { "@type": "Answer", "text": "Claro. Compartimos fotos y reportes de avance por WhatsApp y puedes visitar la obra cuando quieras." } },
         { "@type": "Question", "name": "¿En qué zonas trabajan?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Atendemos proyectos en la región y zonas cercanas. Escríbenos tu ubicación y te confirmamos la cobertura el mismo día." } }
+          "acceptedAnswer": { "@type": "Answer", "text": "Atendemos proyectos en Querétaro y zonas cercanas. Escríbenos tu ubicación y te confirmamos la cobertura el mismo día." } }
       ]
     }
     </script>
@@ -110,10 +116,8 @@
 
 <body>
 
-<!-- Sprite de iconos (SVG propios, sin librerias externas) y marca.
-     EDITAR: sustituir #logo-mark por el logotipo real si el cliente tiene uno. -->
+<!-- Sprite de iconos (SVG propios, sin librerias externas) -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-    <symbol id="logo-mark" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linejoin="miter" stroke-linecap="butt"><path d="M8 37 24 10l16 27"/><path d="M16 37l8-14 8 14"/></g></symbol>
     <symbol id="i-arrow-down" viewBox="0 0 256 256"><path d="M205.66,149.66l-72,72a8,8,0,0,1-11.32,0l-72-72a8,8,0,0,1,11.32-11.32L120,196.69V40a8,8,0,0,1,16,0V196.69l58.34-58.35a8,8,0,0,1,11.32,11.32Z"/></symbol>
     <symbol id="i-arrow-left" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></symbol>
     <symbol id="i-arrow-right" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></symbol>
@@ -149,36 +153,30 @@
     <symbol id="i-whatsapp-logo" viewBox="0 0 256 256"><path d="M187.58,144.84l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88,40,40,0,0,0,40-40A8,8,0,0,0,187.58,144.84ZM152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155l14.61-9.74,23,11.48A24,24,0,0,1,152,176ZM128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"/></symbol>
     <symbol id="i-whatsapp-logo-fill" viewBox="0 0 256 256"><path d="M152.58,145.23l23,11.48A24,24,0,0,1,152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155ZM232,128A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-40,24a8,8,0,0,0-4.42-7.16l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88A40,40,0,0,0,192,152Z"/></symbol>
     <symbol id="i-x" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></symbol>
+    <symbol id="i-check-circle-fill" viewBox="0 0 256 256"><path fill-rule="evenodd" d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,85.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"/></symbol>
 </svg>
 
 <a class="skip-link" href="#main">Saltar al contenido principal</a>
 <span class="top-sentinel" id="topSentinel" aria-hidden="true"></span>
 
 <!-- ============================================================
-     LOADER (spinner de carga con progreso)
+     LOADER: telon guinda con el sello de la marca y progreso
 ============================================================ -->
 <div class="loader" id="loader" role="status" aria-live="polite">
-    <div class="loader-panel loader-panel--top"></div>
-    <div class="loader-panel loader-panel--bottom"></div>
-    <div class="loader-grid" aria-hidden="true"></div>
-
-    <div class="loader-core">
-        <div class="loader-emblem" aria-hidden="true">
-            <svg class="loader-ring" viewBox="0 0 132 132">
-                <circle class="ring-track" cx="66" cy="66" r="58"/>
-                <circle class="ring-fill" id="ringFill" cx="66" cy="66" r="58"/>
-                <circle class="ring-spin" cx="66" cy="66" r="64"/>
-            </svg>
-            <svg class="loader-mark" viewBox="0 0 48 48">
-                <g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linejoin="miter">
-                    <path class="mark-p1" pathLength="1" d="M8 37 24 10l16 27"/>
-                    <path class="mark-p2" pathLength="1" d="M16 37l8-14 8 14"/>
-                </g>
-            </svg>
+    <div class="loader-back"></div>
+    <div class="loader-front">
+        <div class="loader-core">
+            <div class="loader-seal" aria-hidden="true">
+                <img class="loader-ring" src="img/brand/anillo-blanco.webp" alt="" width="1000" height="1000">
+                <img class="loader-emblem" src="img/brand/emblema-blanco.webp" alt="" width="1000" height="1000">
+            </div>
+            <p class="loader-name">Construcciones Martinez</p>
+            <div class="loader-meter">
+                <span class="loader-count"><b id="loaderCount">0</b><small>%</small></span>
+                <span class="loader-bar"><i></i></span>
+            </div>
+            <p class="loader-label">Preparando tu proyecto</p>
         </div>
-        <p class="loader-count"><span id="loaderCount">0</span><small>%</small></p>
-        <p class="loader-name">Construcción y Remodelación</p>
-        <p class="loader-label">Preparando tu proyecto</p>
     </div>
 </div>
 
@@ -189,16 +187,15 @@
 ============================================================ -->
 <header class="site-header" id="siteHeader">
     <div class="container header-inner">
-        <a class="brand" href="#inicio" aria-label="Construcción y Remodelación, ir al inicio">
-            <svg class="brand-mark" aria-hidden="true"><use href="#logo-mark"/></svg>
+        <a class="brand" href="#inicio" aria-label="Construcciones Martinez, ir al inicio">
+            <img class="brand-seal" src="img/brand/sello-guinda-96.webp" srcset="img/brand/sello-guinda-96.webp 1x, img/brand/sello-guinda-256.webp 2x" width="48" height="48" alt="">
             <span class="brand-text">
-                <strong>CONSTRUCCIÓN</strong>
-                <small>Y REMODELACIÓN</small>
+                <small>Construcciones</small>
+                <strong>Martinez</strong>
             </span>
         </a>
 
         <nav class="nav" id="nav" aria-label="Navegación principal">
-            <span class="nav-pill" id="navPill" aria-hidden="true"></span>
             <ul class="nav-list" id="navList">
                 <li><a href="#servicios">Servicios</a></li>
                 <li><a href="#etapas">Etapas</a></li>
@@ -206,9 +203,10 @@
                 <li><a href="#nosotros">Nosotros</a></li>
                 <li><a href="#faq">Preguntas</a></li>
             </ul>
+            <span class="nav-line" id="navPill" aria-hidden="true"></span>
         </nav>
 
-        <a class="btn btn--primary btn--sm header-cta" href="#contacto">Cotizar mi obra</a>
+        <a class="btn btn--primary btn--sm header-cta" href="#contacto"><span>Cotizar mi obra</span></a>
 
         <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Abrir menú">
             <span></span><span></span>
@@ -217,7 +215,7 @@
 </header>
 
 <!-- Menu movil -->
-<div class="mobile-menu" id="mobileMenu" hidden>
+<div class="mobile-menu theme-dark" id="mobileMenu" hidden>
     <nav aria-label="Navegación móvil">
         <ul>
             <li><a href="#servicios">Servicios</a></li>
@@ -227,16 +225,16 @@
             <li><a href="#faq">Preguntas</a></li>
         </ul>
     </nav>
-    <a class="btn btn--primary btn--lg btn--block" href="#contacto">Cotizar mi obra</a>
+    <a class="btn btn--primary btn--lg btn--block" href="#contacto"><span>Cotizar mi obra</span></a>
 </div>
 
 <main id="main">
 
     <!-- ============================================================
-         1. HERO (imagen de fondo fija + particulas + rotador + reel)
+         1. HERO (foto a pantalla completa, tinte guinda, sello con anillo que gira)
     ============================================================ -->
-    <section class="hero" id="inicio" aria-labelledby="hero-title">
-        <div class="hero-media" id="heroMedia" style="background-image:url(data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAABwBACdASoYAA4APwFqrE6rJiQiMAgBYCAJZwDE3rAA8XeGHclXbxxjct0VAAD94xL8JSrA0Hm/5Ji5LvM8Qubz/9D32UxADyzGPK16zhTssP8g9QvVP4Vt+76z0terw4nxaQ8FmUrtmsMlRw7m2sPqBSRSFEHAwCT2Dft7FJogAA==)">
+    <section class="hero theme-dark" id="inicio" aria-labelledby="hero-title">
+        <div class="hero-media" id="heroMedia">
             <picture>
                 <source type="image/avif" srcset="img/web/hero-1200.avif 1200w, img/web/hero-1920.avif 1920w" sizes="100vw">
                 <source type="image/webp" srcset="img/web/hero-1200.webp 1200w, img/web/hero-1920.webp 1920w" sizes="100vw">
@@ -245,110 +243,98 @@
                      width="1920" height="1081" fetchpriority="high" decoding="async">
             </picture>
         </div>
+        <div class="hero-tint" aria-hidden="true"></div>
         <div class="hero-shade" aria-hidden="true"></div>
-        <div class="hero-gridwrap" aria-hidden="true"><div class="hero-grid"></div></div>
-        <div class="hero-scan" aria-hidden="true"></div>
-        <canvas class="hero-embers" id="embers" aria-hidden="true"></canvas>
 
-        <div class="container hero-inner">
-            <div class="hero-copy" id="heroCopy">
-                <p class="eyebrow reveal" data-hero style="--d:0">Constructora y remodeladora</p>
+        <div class="container hero-inner" id="heroInner">
+            <p class="eyebrow reveal" data-hero style="--d:0">Constructora en Querétaro</p>
 
-                <h1 class="hero-title" id="hero-title">
-                    <span class="sr-only">Construcción y Remodelación con precisión de ingeniería</span>
-                    <span class="hero-t1 reveal" data-hero style="--d:120" aria-hidden="true">
-                        <span class="rot" id="rotator">
-                            <span class="rot-word is-active">Construimos</span>
-                            <span class="rot-word">Remodelamos</span>
-                            <span class="rot-word">Ampliamos</span>
-                            <span class="rot-word">Entregamos</span>
-                        </span>
+            <h1 class="hero-title" id="hero-title">
+                <span class="sr-only">Construimos con precisión de ingeniería</span>
+                <span class="hero-line" aria-hidden="true"><span class="hero-line-i" data-hero style="--d:120">
+                    <span class="rot" id="rotator">
+                        <span class="rot-word is-active">Construimos</span>
+                        <span class="rot-word">Remodelamos</span>
+                        <span class="rot-word">Ampliamos</span>
+                        <span class="rot-word">Entregamos</span>
                     </span>
-                    <span class="hero-t2 reveal" data-hero style="--d:240" aria-hidden="true">con precisión de ingeniería.</span>
-                </h1>
+                </span></span>
+                <span class="hero-line" aria-hidden="true"><span class="hero-line-i" data-hero style="--d:240">con precisión de ingeniería.</span></span>
+            </h1>
 
-                <p class="hero-sub reveal" data-hero style="--d:360">Obra nueva, remodelación y acabados con supervisión en sitio y presupuesto claro. De los planos a las llaves, sin sorpresas.</p>
+            <p class="hero-sub reveal" data-hero style="--d:380">Obra nueva, remodelación y acabados con supervisión en sitio y presupuesto claro. De los planos a las llaves.</p>
 
-                <div class="hero-cta reveal" data-hero style="--d:480">
-                    <a class="btn btn--primary btn--lg btn--shine" data-magnetic href="#contacto">
-                        Estoy listo para construir <svg class="ic" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"/></svg>
-                    </a>
-                    <a class="btn btn--ghost btn--lg" href="#proyectos">Ver obras realizadas</a>
-                </div>
+            <div class="hero-cta reveal" data-hero style="--d:500">
+                <a class="btn btn--primary btn--lg" href="#contacto"><span>Cotizar mi obra</span> <svg class="ic" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"/></svg></a>
+                <a class="btn btn--ghost btn--lg" href="#proyectos"><span>Ver obras realizadas</span></a>
             </div>
-
-            <!-- Reel: de la obra negra al acabado -->
-            <aside class="reel reveal reveal--scale" data-hero style="--d:300" id="reel" aria-label="Etapas de una obra, de la estructura al acabado">
-                <div class="reel-frame" id="reelFrame">
-                    <div class="reel-slides">
-                        <figure class="reel-slide is-active">
-                            <img src="img/web/cimentacion-castillos-acero-800.webp" srcset="img/web/cimentacion-castillos-acero-480.webp 480w, img/web/cimentacion-castillos-acero-800.webp 800w, img/web/cimentacion-castillos-acero-1200.webp 1200w" sizes="380px" width="1200" height="1600" alt="Cimentación y castillos de acero armados en una obra nueva" loading="lazy" decoding="async" style="background:url(data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAADQBACdASoSABgAPwFwslIrJiSiqAqpYCAJZQC+SA1AYZi6xUvhcTrymTaRCj+GAAD+Uv1vjQxzXQFIr2164sV1FspovXrbpSeHLwVBGxm4knjE8r4NiVrvOQAPFXkVtv5BL4tLgj1w5UDd2pGFd6Vj3joVRVAoN+HH6lsYt+In9ePwjQIFUkpqzfTam6Cb6RVxYAAA) center/cover">
-                        </figure>
-                        <figure class="reel-slide">
-                            <img src="img/web/colado-losa-concreto-armado-800.webp" srcset="img/web/colado-losa-concreto-armado-480.webp 480w, img/web/colado-losa-concreto-armado-800.webp 800w, img/web/colado-losa-concreto-armado-900.webp 900w" sizes="380px" width="900" height="1600" alt="Colado de losa de concreto armado con bombeo y malla electrosoldada" loading="lazy" decoding="async" style="background:url(data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAADwAwCdASoNABgAPwFqrE8rJiQiMAgBYCAJZwAAL2WiBXVT7e7B6LwAAPjb5LeTvemoT36jJ8EA/ukiCVz/5GUbZpGjOTVigbOvN+m5Mcl/ka6zjbzKL2x8ji8egvVTvz+9lubG6l6AJ/gA) center/cover">
-                        </figure>
-                        <figure class="reel-slide">
-                            <img src="img/web/cocina-granito-carpinteria-800.webp" srcset="img/web/cocina-granito-carpinteria-480.webp 480w, img/web/cocina-granito-carpinteria-800.webp 800w, img/web/cocina-granito-carpinteria-1200.webp 1200w" sizes="380px" width="1200" height="1599" alt="Cocina con barra de granito y carpintería de madera a la medida" loading="lazy" decoding="async" style="background:url(data:image/webp;base64,UklGRpIAAABXRUJQVlA4IIYAAABwBQCdASoSABgAPwFssFErJaSisBgIAWAgCWUAxzAPSPEmalkFgPByeSgpehF55gxTQzoAAP6vbKlDW6JaiL7arY8w/Kpb4IiMytk5NVraehbYDAEIYHaE+CMJDHQ2QX0rPjYBp0ejTjD3Qhnv/wQtqrluWTkBXgxkPqlkmNSAj2x9POAAAA==) center/cover">
-                        </figure>
-                        <figure class="reel-slide">
-                            <img src="img/web/acabados-ventanal-marmol-800.webp" srcset="img/web/acabados-ventanal-marmol-480.webp 480w, img/web/acabados-ventanal-marmol-800.webp 800w, img/web/acabados-ventanal-marmol-1200.webp 1200w" sizes="380px" width="1200" height="1599" alt="Ventanal de aluminio con vista panorámica y piso de mármol pulido" loading="lazy" decoding="async" style="background:url(data:image/webp;base64,UklGRpIAAABXRUJQVlA4IIYAAACQBACdASoSABgAPwFysFKrJqSiqAqpYCAJZQAALkK5sx7o0Mh7MJagApWKWigA/rkBTxcq7gGaKtkCvS9gW3mBAYcQuiEaPKgXIlTcydzA8vj0wB6ETXimSjlJASxHwf2W+BxiSai7sijGAegWh1MdlmyaSzNVrK4fbFtnF62vhEtBNAAAAA==) center/cover">
-                        </figure>
-                    </div>
-                    <span class="crop crop--tl" aria-hidden="true"></span>
-                    <span class="crop crop--tr" aria-hidden="true"></span>
-                    <span class="crop crop--bl" aria-hidden="true"></span>
-                    <span class="crop crop--br" aria-hidden="true"></span>
-                </div>
-                <div class="reel-meta">
-                    <p class="reel-caption" id="reelCaption" aria-live="off">Cimentación y castillos</p>
-                    <div class="reel-dots" role="group" aria-label="Seleccionar etapa">
-                        <button type="button" class="reel-dot is-active" aria-label="Cimentación y castillos" aria-current="true"><i></i></button>
-                        <button type="button" class="reel-dot" aria-label="Colado de losa"><i></i></button>
-                        <button type="button" class="reel-dot" aria-label="Carpintería y granito"><i></i></button>
-                        <button type="button" class="reel-dot" aria-label="Acabados y ventanales"><i></i></button>
-                    </div>
-                </div>
-
-                <a class="seal" href="#servicios" aria-label="Ir a la sección de servicios">
-                    <svg class="seal-ring" viewBox="0 0 120 120" aria-hidden="true">
-                        <defs><path id="sealPath" d="M60,60 m-45,0 a45,45 0 1,1 90,0 a45,45 0 1,1 -90,0"/></defs>
-                        <text class="seal-text"><textPath href="#sealPath" textLength="280" lengthAdjust="spacing">CONSTRUCCIÓN / REMODELACIÓN / ACABADOS /</textPath></text>
-                    </svg>
-                    <svg class="ic" aria-hidden="true" focusable="false"><use href="#i-arrow-down"/></svg>
-                </a>
-            </aside>
         </div>
+
+        <!-- Sello de la marca: el anillo con letras gira con el scroll, el emblema queda fijo -->
+        <a class="seal hero-seal reveal reveal--scale" data-hero style="--d:700" href="#servicios" aria-label="Ir a la sección de servicios">
+            <img class="seal-ring" src="img/brand/anillo-blanco.webp" alt="" width="1000" height="1000" loading="lazy">
+            <img class="seal-emblem" src="img/brand/emblema-blanco.webp" alt="" width="1000" height="1000" loading="lazy">
+        </a>
     </section>
 
     <!-- ============================================================
-         2. FRANJA DE ESPECIALIDADES (unico marquee de la pagina)
+         2. CIFRAS (banda guinda bajo el hero)
+         EDITAR: estos compromisos son de ejemplo. Ajusta las cifras a lo que el negocio realmente ofrece.
     ============================================================ -->
-    <section class="ticker" aria-label="Especialidades">
-        <div class="ticker-track" aria-hidden="true">
-            <ul class="ticker-set">
-                <li>Obra nueva</li><li>Remodelación</li><li>Acabados finos</li><li>Estructura</li><li>Urbanización</li><li>Instalaciones</li><li>Supervisión</li><li>Excavación</li>
-            </ul>
-            <ul class="ticker-set">
-                <li>Obra nueva</li><li>Remodelación</li><li>Acabados finos</li><li>Estructura</li><li>Urbanización</li><li>Instalaciones</li><li>Supervisión</li><li>Excavación</li>
-            </ul>
+    <section class="stats theme-wine" aria-label="Nuestros compromisos">
+        <div class="container">
+            <dl class="stats-grid">
+                <div class="stat reveal">
+                    <dd><span class="count" data-count="48" data-suffix="h">48h</span></dd>
+                    <dt>Para recibir tu presupuesto</dt>
+                </div>
+                <div class="stat reveal">
+                    <dd><span class="count" data-count="100" data-suffix="%">100%</span></dd>
+                    <dt>Presupuestos por escrito y por partidas</dt>
+                </div>
+                <div class="stat reveal">
+                    <dd><span class="count" data-count="6">6</span></dd>
+                    <dt>Servicios con un solo equipo</dt>
+                </div>
+                <div class="stat reveal">
+                    <dd><span class="count" data-count="5">5</span></dd>
+                    <dt>Etapas documentadas con fotos</dt>
+                </div>
+            </dl>
         </div>
     </section>
 
     <!-- ============================================================
          3. MANIFIESTO (texto que se ilumina con el scroll)
     ============================================================ -->
-    <section class="manifesto" aria-labelledby="manifesto-title">
+    <section class="manifesto theme-light" aria-labelledby="manifesto-title">
         <div class="container">
             <h2 class="sr-only" id="manifesto-title">Nuestra forma de construir</h2>
-            <p class="manifesto-text" id="manifestoText">Una obra bien hecha empieza con un plan claro, sigue con materiales de primera y termina con un cliente que vuelve a llamarnos.</p>
-            <a class="link-arrow reveal" href="#proceso">Conoce cómo trabajamos <svg class="ic" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <div class="manifesto-wrap" id="manifestoWrap">
+                <p class="manifesto-text" id="manifestoText">Una obra bien hecha empieza con un plan claro, sigue con materiales de primera y termina con un cliente que vuelve a llamarnos.</p>
+                <a class="link-arrow reveal" href="#proceso"><span>Conoce cómo trabajamos</span> <svg class="ic" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            </div>
         </div>
     </section>
 
     <!-- ============================================================
-         4. SERVICIOS (bento de 6 celdas)
+         4. FRANJA DE MARCA (unico marquee de la pagina, avanza con el scroll)
     ============================================================ -->
-    <section class="services" id="servicios" aria-labelledby="services-title">
+    <section class="marquee theme-wine" id="marquee" aria-label="Construcción, obras y desarrollo">
+        <div class="marquee-track" id="marqueeTrack" aria-hidden="true">
+            <ul class="marquee-set">
+                <li class="o">Construcción</li><li class="sep"></li><li>Obras</li><li class="sep"></li><li class="o">Desarrollo</li><li class="sep"></li>
+            </ul>
+            <ul class="marquee-set">
+                <li class="o">Construcción</li><li class="sep"></li><li>Obras</li><li class="sep"></li><li class="o">Desarrollo</li><li class="sep"></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         5. SERVICIOS (paneles que se expanden)
+    ============================================================ -->
+    <section class="services theme-dark" id="servicios" aria-labelledby="services-title">
         <div class="container">
             <header class="section-head">
                 <p class="eyebrow reveal">Servicios</p>
@@ -356,74 +342,93 @@
                 <p class="lead reveal" style="--d:160">Desde la excavación hasta el último acabado, coordinamos cada etapa para que no pierdas tiempo ni dinero.</p>
             </header>
 
-            <div class="bento" data-stagger>
-                <article class="tile tile--a reveal" data-spotlight>
-                    <img src="img/web/cimentacion-castillos-acero-800.webp" srcset="img/web/cimentacion-castillos-acero-480.webp 480w, img/web/cimentacion-castillos-acero-800.webp 800w, img/web/cimentacion-castillos-acero-1200.webp 1200w" sizes="(min-width:1024px) 50vw, 100vw" width="1200" height="1600" alt="Cimentación y castillos de acero en una construcción nueva con edificio al fondo" loading="lazy" decoding="async" style="background:url(data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAADQBACdASoSABgAPwFwslIrJiSiqAqpYCAJZQC+SA1AYZi6xUvhcTrymTaRCj+GAAD+Uv1vjQxzXQFIr2164sV1FspovXrbpSeHLwVBGxm4knjE8r4NiVrvOQAPFXkVtv5BL4tLgj1w5UDd2pGFd6Vj3joVRVAoN+HH6lsYt+In9ePwjQIFUkpqzfTam6Cb6RVxYAAA) center/cover">
-                    <div class="tile-body">
-                        <span class="tile-icon"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-buildings"/></svg></span>
+            <ul class="svc-list reveal" id="svcList">
+                <li class="svc is-active">
+                    <img src="img/web/cimentacion-castillos-acero-800.webp" srcset="img/web/cimentacion-castillos-acero-480.webp 480w, img/web/cimentacion-castillos-acero-800.webp 800w, img/web/cimentacion-castillos-acero-1200.webp 1200w" sizes="(min-width:1024px) 620px, 100vw" width="1200" height="1600" alt="Cimentación y castillos de acero en una construcción nueva con edificio al fondo" loading="lazy" decoding="async" data-fade>
+                    <span class="svc-shade" aria-hidden="true"></span>
+                    <span class="svc-ic" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-buildings"/></svg></span>
+                    <span class="svc-vt" aria-hidden="true">Obra nueva y estructura</span>
+                    <div class="svc-body">
                         <h3>Obra nueva y estructura</h3>
                         <p>Cimentación, castillos, muros y losas de concreto armado, construidos conforme a plano y con control de calidad.</p>
                         <ul class="tags"><li>Cimentación</li><li>Castillos</li><li>Losas</li><li>Muros</li></ul>
                     </div>
-                </article>
-
-                <article class="tile tile--b reveal" data-spotlight>
-                    <img src="img/web/cocina-granito-carpinteria-800.webp" srcset="img/web/cocina-granito-carpinteria-480.webp 480w, img/web/cocina-granito-carpinteria-800.webp 800w, img/web/cocina-granito-carpinteria-1200.webp 1200w" sizes="(min-width:1024px) 50vw, 100vw" width="1200" height="1599" alt="Remodelación de cocina con barra de granito y carpintería de madera" loading="lazy" decoding="async" style="background:url(data:image/webp;base64,UklGRpIAAABXRUJQVlA4IIYAAABwBQCdASoSABgAPwFssFErJaSisBgIAWAgCWUAxzAPSPEmalkFgPByeSgpehF55gxTQzoAAP6vbKlDW6JaiL7arY8w/Kpb4IiMytk5NVraehbYDAEIYHaE+CMJDHQ2QX0rPjYBp0ejTjD3Qhnv/wQtqrluWTkBXgxkPqlkmNSAj2x9POAAAA==) center/cover">
-                    <div class="tile-body">
-                        <span class="tile-icon"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-house-line"/></svg></span>
+                    <button type="button" class="svc-hit" aria-expanded="true" aria-label="Ver detalle: Obra nueva y estructura"></button>
+                </li>
+                <li class="svc">
+                    <img src="img/web/cocina-granito-carpinteria-800.webp" srcset="img/web/cocina-granito-carpinteria-480.webp 480w, img/web/cocina-granito-carpinteria-800.webp 800w, img/web/cocina-granito-carpinteria-1200.webp 1200w" sizes="(min-width:1024px) 620px, 100vw" width="1200" height="1599" alt="Remodelación de cocina con barra de granito y carpintería de madera" loading="lazy" decoding="async" data-fade>
+                    <span class="svc-shade" aria-hidden="true"></span>
+                    <span class="svc-ic" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-house-line"/></svg></span>
+                    <span class="svc-vt" aria-hidden="true">Remodelación integral</span>
+                    <div class="svc-body">
                         <h3>Remodelación integral</h3>
                         <p>Renovamos casas, departamentos y locales: demolición, instalaciones, pisos, carpintería y pintura.</p>
                         <ul class="tags"><li>Cocinas</li><li>Baños</li><li>Pisos</li><li>Pintura</li></ul>
                     </div>
-                </article>
-
-                <article class="tile tile--c reveal" data-spotlight>
-                    <div class="tile-body">
-                        <span class="tile-icon"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-paint-roller"/></svg></span>
+                    <button type="button" class="svc-hit" aria-expanded="false" aria-label="Ver detalle: Remodelación integral"></button>
+                </li>
+                <li class="svc">
+                    <img src="img/web/acabados-ventanal-marmol-800.webp" srcset="img/web/acabados-ventanal-marmol-480.webp 480w, img/web/acabados-ventanal-marmol-800.webp 800w, img/web/acabados-ventanal-marmol-1200.webp 1200w" sizes="(min-width:1024px) 620px, 100vw" width="1200" height="1599" alt="Ventanal de aluminio con vista panorámica y piso de mármol pulido" loading="lazy" decoding="async" data-fade>
+                    <span class="svc-shade" aria-hidden="true"></span>
+                    <span class="svc-ic" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-paint-roller"/></svg></span>
+                    <span class="svc-vt" aria-hidden="true">Acabados finos</span>
+                    <div class="svc-body">
                         <h3>Acabados finos</h3>
                         <p>Porcelanato, mármol, canceles de aluminio y pintura con remate impecable.</p>
+                        <ul class="tags"><li>Porcelanato</li><li>Mármol</li><li>Canceles</li></ul>
                     </div>
-                </article>
-
-                <article class="tile tile--d reveal" data-spotlight>
-                    <div class="tile-body">
-                        <span class="tile-icon"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-lightning"/></svg></span>
+                    <button type="button" class="svc-hit" aria-expanded="false" aria-label="Ver detalle: Acabados finos"></button>
+                </li>
+                <li class="svc">
+                    <img src="img/web/obra-ductos-estructura-800.webp" srcset="img/web/obra-ductos-estructura-480.webp 480w, img/web/obra-ductos-estructura-800.webp 800w, img/web/obra-ductos-estructura-1156.webp 1156w" sizes="(min-width:1024px) 620px, 100vw" width="1156" height="651" alt="Obra con muros de block, castillos de acero y tubería naranja de instalaciones" loading="lazy" decoding="async" data-fade>
+                    <span class="svc-shade" aria-hidden="true"></span>
+                    <span class="svc-ic" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-lightning"/></svg></span>
+                    <span class="svc-vt" aria-hidden="true">Instalaciones</span>
+                    <div class="svc-body">
                         <h3>Instalaciones</h3>
                         <p>Sistemas eléctricos, hidráulicos y sanitarios probados antes de cerrar muros.</p>
+                        <ul class="tags"><li>Eléctricas</li><li>Hidráulicas</li><li>Sanitarias</li></ul>
                     </div>
-                </article>
-
-                <article class="tile tile--e reveal" data-spotlight>
-                    <img src="img/web/urbanizacion-adoquin-800.webp" srcset="img/web/urbanizacion-adoquin-480.webp 480w, img/web/urbanizacion-adoquin-800.webp 800w, img/web/urbanizacion-adoquin-1200.webp 1200w" sizes="(min-width:1024px) 50vw, 100vw" width="1200" height="1599" alt="Adoquinado y urbanización de una calle en proceso de construcción" loading="lazy" decoding="async" style="background:url(data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAACQBACdASoSABgAPwFyslIrJqSiqAqpYCAJZ0wAVdaGWUuQRl08AYby1ZPxYIAA9jRqkWcaUHm0ZS/8UQU24P1DhuAa7JafSqEhR0mJ0qlrvKYoFwwtn58mu8Oz34X/mybu63ZDp6ApcwK3ZI7cYHcCmAAAAA==) center/cover">
-                    <div class="tile-body">
-                        <span class="tile-icon"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-road-horizon"/></svg></span>
+                    <button type="button" class="svc-hit" aria-expanded="false" aria-label="Ver detalle: Instalaciones"></button>
+                </li>
+                <li class="svc">
+                    <img src="img/web/urbanizacion-adoquin-800.webp" srcset="img/web/urbanizacion-adoquin-480.webp 480w, img/web/urbanizacion-adoquin-800.webp 800w, img/web/urbanizacion-adoquin-1200.webp 1200w" sizes="(min-width:1024px) 620px, 100vw" width="1200" height="1599" alt="Adoquinado y urbanización de una calle en proceso de construcción" loading="lazy" decoding="async" data-fade>
+                    <span class="svc-shade" aria-hidden="true"></span>
+                    <span class="svc-ic" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-road-horizon"/></svg></span>
+                    <span class="svc-vt" aria-hidden="true">Urbanización y obra exterior</span>
+                    <div class="svc-body">
                         <h3>Urbanización y obra exterior</h3>
                         <p>Adoquín, banquetas, guarniciones, bardas y accesos que resisten el uso diario.</p>
+                        <ul class="tags"><li>Adoquín</li><li>Banquetas</li><li>Bardas</li></ul>
                     </div>
-                </article>
-
-                <article class="tile tile--f reveal" data-spotlight>
-                    <img src="img/web/excavacion-retroexcavadora-800.webp" srcset="img/web/excavacion-retroexcavadora-480.webp 480w, img/web/excavacion-retroexcavadora-800.webp 800w, img/web/excavacion-retroexcavadora-1200.webp 1200w" sizes="(min-width:1024px) 50vw, 100vw" width="1200" height="1599" alt="Retroexcavadora amarilla realizando excavación y movimiento de tierras en un terreno" loading="lazy" decoding="async" style="background:url(data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAAAwBACdASoSABgAPwF2slOrJyQiqAgBYCAJRZgAaIAIUqtePvq60M7ehIAA/Ml1vJHw7sXWwiPh59IjgdRHv8T2lCu4VjHl2Esb04k8DGl9xNyGc6rutkrhBFz1raz14/XcgvWZsd6KGgxkVpf0+6CEoqkGvv9CirS5jcH1lGHXT7YGbyfJvpD7D2AAAA==) center/cover">
-                    <div class="tile-body">
-                        <span class="tile-icon"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-tractor"/></svg></span>
+                    <button type="button" class="svc-hit" aria-expanded="false" aria-label="Ver detalle: Urbanización y obra exterior"></button>
+                </li>
+                <li class="svc">
+                    <img src="img/web/excavacion-retroexcavadora-800.webp" srcset="img/web/excavacion-retroexcavadora-480.webp 480w, img/web/excavacion-retroexcavadora-800.webp 800w, img/web/excavacion-retroexcavadora-1200.webp 1200w" sizes="(min-width:1024px) 620px, 100vw" width="1200" height="1599" alt="Retroexcavadora amarilla realizando excavación y movimiento de tierras en un terreno" loading="lazy" decoding="async" data-fade>
+                    <span class="svc-shade" aria-hidden="true"></span>
+                    <span class="svc-ic" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-tractor"/></svg></span>
+                    <span class="svc-vt" aria-hidden="true">Excavación y movimiento de tierras</span>
+                    <div class="svc-body">
                         <h3>Excavación y movimiento de tierras</h3>
                         <p>Excavación, nivelación y rellenos con maquinaria para dejar tu terreno listo para construir.</p>
+                        <ul class="tags"><li>Excavación</li><li>Nivelación</li><li>Rellenos</li></ul>
                     </div>
-                </article>
-            </div>
+                    <button type="button" class="svc-hit" aria-expanded="false" aria-label="Ver detalle: Excavación y movimiento de tierras"></button>
+                </li>
+            </ul>
 
             <div class="section-cta reveal">
-                <a class="btn btn--primary btn--lg" data-magnetic href="#contacto">Quiero mi presupuesto <svg class="ic" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"/></svg></a>
+                <a class="btn btn--primary btn--lg" href="#contacto"><span>Cotizar mi obra</span> <svg class="ic" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"/></svg></a>
             </div>
         </div>
     </section>
 
     <!-- ============================================================
-         5. ETAPAS (scrollytelling: el scroll avanza la obra, fija en escritorio)
+         6. ETAPAS (la seccion se fija y el scroll avanza la obra)
     ============================================================ -->
-    <section class="stages" id="etapas" aria-labelledby="stages-title" style="--n:5">
+    <section class="stages theme-light" id="etapas" aria-labelledby="stages-title" style="--n:5">
         <div class="stages-pin">
-            <div class="stages-grid" id="stagesGrid">
+            <div class="container stages-grid" id="stagesGrid">
                 <div class="stages-copy">
                     <h2 id="stages-title" data-split>De la tierra a las llaves.</h2>
                     <p class="lead reveal" style="--d:120">Así avanza tu obra con nosotros. Cada etapa se revisa y se documenta con fotos antes de pasar a la siguiente.</p>
@@ -431,72 +436,82 @@
                     <ol class="stage-list" id="stageList">
                         <li class="stage is-active">
                             <figure class="stage-fig">
-                                <img src="img/web/excavacion-retroexcavadora-800.webp" srcset="img/web/excavacion-retroexcavadora-480.webp 480w, img/web/excavacion-retroexcavadora-800.webp 800w, img/web/excavacion-retroexcavadora-1200.webp 1200w" sizes="(min-width:1024px) 40vw, 100vw" width="1200" height="1599" alt="Retroexcavadora excavando y nivelando un terreno antes de construir" loading="lazy" decoding="async" style="background:url(data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAAAwBACdASoSABgAPwF2slOrJyQiqAgBYCAJRZgAaIAIUqtePvq60M7ehIAA/Ml1vJHw7sXWwiPh59IjgdRHv8T2lCu4VjHl2Esb04k8DGl9xNyGc6rutkrhBFz1raz14/XcgvWZsd6KGgxkVpf0+6CEoqkGvv9CirS5jcH1lGHXT7YGbyfJvpD7D2AAAA==) center/cover">
+                                <img src="img/web/excavacion-retroexcavadora-800.webp" srcset="img/web/excavacion-retroexcavadora-480.webp 480w, img/web/excavacion-retroexcavadora-800.webp 800w, img/web/excavacion-retroexcavadora-1200.webp 1200w" sizes="(min-width:1024px) 40vw, 100vw" width="1200" height="1599" alt="Retroexcavadora excavando y nivelando un terreno antes de construir" loading="lazy" decoding="async" data-fade>
                             </figure>
                             <div class="stage-top"><span class="stage-ic"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-shovel"/></svg></span><h3>Terreno y excavación</h3></div>
-                            <div class="stage-desc"><p>Limpieza, trazo, excavación y nivelación con maquinaria para dejar el terreno listo.</p></div>
+                            <div class="stage-desc"><div><p>Limpieza, trazo, excavación y nivelación con maquinaria para dejar el terreno listo.</p></div></div>
                         </li>
                         <li class="stage">
                             <figure class="stage-fig">
-                                <img src="img/web/zapatas-cimentacion-800.webp" srcset="img/web/zapatas-cimentacion-480.webp 480w, img/web/zapatas-cimentacion-800.webp 800w, img/web/zapatas-cimentacion-1200.webp 1200w" sizes="(min-width:1024px) 40vw, 100vw" width="1200" height="1599" alt="Zanjas y zapatas de cimentación con castillos de acero listos para colar" loading="lazy" decoding="async" style="background:url(data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAACQBACdASoSABgAPwFwrFErJiQiqA1RYCAJZwCw7A8d+3RyR1BiAL1JjXFtFrAA/pdrowLIrXOz2bKAJG/oLNa0VHzcnLch0z0AUU/hd26EIjLGa7ktLichWO8y0opXpY9sJC5JTZiSzrBvgUTMZfp0iqDZwWE8kbRfVoeR6DAYwHP2FBqLzbgAAAA=) center/cover">
+                                <img src="img/web/zapatas-cimentacion-800.webp" srcset="img/web/zapatas-cimentacion-480.webp 480w, img/web/zapatas-cimentacion-800.webp 800w, img/web/zapatas-cimentacion-1200.webp 1200w" sizes="(min-width:1024px) 40vw, 100vw" width="1200" height="1599" alt="Zanjas y zapatas de cimentación con castillos de acero listos para colar" loading="lazy" decoding="async" data-fade>
                             </figure>
                             <div class="stage-top"><span class="stage-ic"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-ruler"/></svg></span><h3>Cimentación</h3></div>
-                            <div class="stage-desc"><p>Zapatas, trabes y acero de refuerzo armados y revisados antes del colado.</p></div>
+                            <div class="stage-desc"><div><p>Zapatas, trabes y acero de refuerzo armados y revisados antes del colado.</p></div></div>
                         </li>
                         <li class="stage">
                             <figure class="stage-fig">
-                                <img src="img/web/colado-losa-concreto-armado-800.webp" srcset="img/web/colado-losa-concreto-armado-480.webp 480w, img/web/colado-losa-concreto-armado-800.webp 800w, img/web/colado-losa-concreto-armado-900.webp 900w" sizes="(min-width:1024px) 40vw, 100vw" width="900" height="1600" alt="Colado de losa de concreto con malla electrosoldada y manguera de bombeo" loading="lazy" decoding="async" style="background:url(data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAADwAwCdASoNABgAPwFqrE8rJiQiMAgBYCAJZwAAL2WiBXVT7e7B6LwAAPjb5LeTvemoT36jJ8EA/ukiCVz/5GUbZpGjOTVigbOvN+m5Mcl/ka6zjbzKL2x8ji8egvVTvz+9lubG6l6AJ/gA) center/cover">
+                                <img src="img/web/colado-losa-concreto-armado-800.webp" srcset="img/web/colado-losa-concreto-armado-480.webp 480w, img/web/colado-losa-concreto-armado-800.webp 800w, img/web/colado-losa-concreto-armado-900.webp 900w" sizes="(min-width:1024px) 40vw, 100vw" width="900" height="1600" alt="Colado de losa de concreto con malla electrosoldada y manguera de bombeo" loading="lazy" decoding="async" data-fade>
                             </figure>
                             <div class="stage-top"><span class="stage-ic"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-wall"/></svg></span><h3>Estructura y muros</h3></div>
-                            <div class="stage-desc"><p>Castillos, losas y muros de block levantados a plomo y a nivel.</p></div>
+                            <div class="stage-desc"><div><p>Castillos, losas y muros de block levantados a plomo y a nivel.</p></div></div>
                         </li>
                         <li class="stage">
                             <figure class="stage-fig">
-                                <img src="img/web/obra-ductos-muros-800.webp" srcset="img/web/obra-ductos-muros-480.webp 480w, img/web/obra-ductos-muros-800.webp 800w, img/web/obra-ductos-muros-1156.webp 1156w" sizes="(min-width:1024px) 40vw, 100vw" width="1156" height="651" alt="Muros de block con tubería naranja de instalaciones antes de cerrar" loading="lazy" decoding="async" style="background:url(data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAAAwBACdASoYAA4APwFqrU8rJaQiMAgBYCAJYwCuHBulTyqkkoDvuIgZqgAA/lP0pZ4xahZKcfer8pv+lk1OFf9lWV7HjUxze3sUjijVi7K2WLcml8gAAA==) center/cover">
+                                <img src="img/web/obra-ductos-muros-800.webp" srcset="img/web/obra-ductos-muros-480.webp 480w, img/web/obra-ductos-muros-800.webp 800w, img/web/obra-ductos-muros-1156.webp 1156w" sizes="(min-width:1024px) 40vw, 100vw" width="1156" height="651" alt="Muros de block con tubería naranja de instalaciones antes de cerrar" loading="lazy" decoding="async" data-fade>
                             </figure>
                             <div class="stage-top"><span class="stage-ic"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-pipe"/></svg></span><h3>Instalaciones</h3></div>
-                            <div class="stage-desc"><p>Tuberías eléctricas, hidráulicas y sanitarias probadas antes de cerrar muros.</p></div>
+                            <div class="stage-desc"><div><p>Tuberías eléctricas, hidráulicas y sanitarias probadas antes de cerrar muros.</p></div></div>
                         </li>
                         <li class="stage">
                             <figure class="stage-fig">
-                                <img src="img/web/acabados-ventanal-marmol-800.webp" srcset="img/web/acabados-ventanal-marmol-480.webp 480w, img/web/acabados-ventanal-marmol-800.webp 800w, img/web/acabados-ventanal-marmol-1200.webp 1200w" sizes="(min-width:1024px) 40vw, 100vw" width="1200" height="1599" alt="Ventanal de aluminio y piso de mármol pulido en un espacio terminado" loading="lazy" decoding="async" style="background:url(data:image/webp;base64,UklGRpIAAABXRUJQVlA4IIYAAACQBACdASoSABgAPwFysFKrJqSiqAqpYCAJZQAALkK5sx7o0Mh7MJagApWKWigA/rkBTxcq7gGaKtkCvS9gW3mBAYcQuiEaPKgXIlTcydzA8vj0wB6ETXimSjlJASxHwf2W+BxiSai7sijGAegWh1MdlmyaSzNVrK4fbFtnF62vhEtBNAAAAA==) center/cover">
+                                <img src="img/web/acabados-ventanal-marmol-800.webp" srcset="img/web/acabados-ventanal-marmol-480.webp 480w, img/web/acabados-ventanal-marmol-800.webp 800w, img/web/acabados-ventanal-marmol-1200.webp 1200w" sizes="(min-width:1024px) 40vw, 100vw" width="1200" height="1599" alt="Ventanal de aluminio y piso de mármol pulido en un espacio terminado" loading="lazy" decoding="async" data-fade>
                             </figure>
                             <div class="stage-top"><span class="stage-ic"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-key"/></svg></span><h3>Acabados y entrega</h3></div>
-                            <div class="stage-desc"><p>Pisos, carpintería, canceles y pintura con remate limpio y revisión final contigo.</p></div>
+                            <div class="stage-desc"><div><p>Pisos, carpintería, canceles y pintura con remate limpio y revisión final contigo.</p></div></div>
                         </li>
                     </ol>
                 </div>
-                <span class="stages-frame" aria-hidden="true">
-                    <span class="crop crop--tl"></span><span class="crop crop--tr"></span>
-                    <span class="crop crop--bl"></span><span class="crop crop--br"></span>
-                </span>
+
+                <!-- Visor de escritorio: las fotos se descubren una sobre otra al avanzar la etapa -->
+                <div class="stages-visual" id="stagesVisual" aria-hidden="true">
+                    <span class="stages-block"></span>
+                    <div class="stages-frame">
+                        <figure class="stage-img is-shown is-active"><img src="img/web/excavacion-retroexcavadora-800.webp" srcset="img/web/excavacion-retroexcavadora-480.webp 480w, img/web/excavacion-retroexcavadora-800.webp 800w, img/web/excavacion-retroexcavadora-1200.webp 1200w" sizes="(min-width:1024px) 52vw, 100vw" width="1200" height="1599" alt="" loading="lazy" decoding="async" data-fade></figure>
+                        <figure class="stage-img"><img src="img/web/zapatas-cimentacion-800.webp" srcset="img/web/zapatas-cimentacion-480.webp 480w, img/web/zapatas-cimentacion-800.webp 800w, img/web/zapatas-cimentacion-1200.webp 1200w" sizes="(min-width:1024px) 52vw, 100vw" width="1200" height="1599" alt="" loading="lazy" decoding="async" data-fade></figure>
+                        <figure class="stage-img"><img src="img/web/colado-losa-concreto-armado-800.webp" srcset="img/web/colado-losa-concreto-armado-480.webp 480w, img/web/colado-losa-concreto-armado-800.webp 800w, img/web/colado-losa-concreto-armado-900.webp 900w" sizes="(min-width:1024px) 52vw, 100vw" width="900" height="1600" alt="" loading="lazy" decoding="async" data-fade></figure>
+                        <figure class="stage-img"><img src="img/web/obra-ductos-muros-800.webp" srcset="img/web/obra-ductos-muros-480.webp 480w, img/web/obra-ductos-muros-800.webp 800w, img/web/obra-ductos-muros-1156.webp 1156w" sizes="(min-width:1024px) 52vw, 100vw" width="1156" height="651" alt="" loading="lazy" decoding="async" data-fade></figure>
+                        <figure class="stage-img"><img src="img/web/acabados-ventanal-marmol-800.webp" srcset="img/web/acabados-ventanal-marmol-480.webp 480w, img/web/acabados-ventanal-marmol-800.webp 800w, img/web/acabados-ventanal-marmol-1200.webp 1200w" sizes="(min-width:1024px) 52vw, 100vw" width="1200" height="1599" alt="" loading="lazy" decoding="async" data-fade></figure>
+                        <span class="stages-bar"><i></i></span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- ============================================================
-         6. BANDA VISUAL (imagen de fondo fija)
+         7. BANDA VISUAL (foto con parallax y tinte guinda)
     ============================================================ -->
-    <section class="vista" aria-labelledby="vista-title">
+    <section class="vista theme-dark" aria-labelledby="vista-title">
         <div class="vista-media">
-            <img src="img/web/sala-ventanal-carpinteria-800.webp" srcset="img/web/sala-ventanal-carpinteria-480.webp 480w, img/web/sala-ventanal-carpinteria-800.webp 800w, img/web/sala-ventanal-carpinteria-1200.webp 1200w" sizes="100vw" width="1200" height="1599" alt="Interior terminado con ventanales de piso a techo y vista a un lago" loading="lazy" decoding="async" style="background:url(data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAACwBACdASoSABgAPwFysFIrJqSiqAqpYCAJZwCw/f/gGHtwyDs2iLzbtKgpO8QAAP53Frp2kTwCwnHcXa1+cLFH4YjpdeR6JGVBi3pjVQE47Xiqtgwgt+jkafNB5NFYeoH0/CHIBXghaMY8HFCNLvIrv4U7FMY0tA9K1fBPuwAAAA==) center/cover">
+            <img class="vista-img" src="img/web/sala-ventanal-carpinteria-800.webp" srcset="img/web/sala-ventanal-carpinteria-480.webp 480w, img/web/sala-ventanal-carpinteria-800.webp 800w, img/web/sala-ventanal-carpinteria-1200.webp 1200w" sizes="100vw" width="1200" height="1599" alt="Interior terminado con ventanales de piso a techo y vista a un lago" loading="lazy" decoding="async" data-fade data-parallax="0.09">
         </div>
         <div class="vista-shade" aria-hidden="true"></div>
         <div class="container vista-inner">
             <h2 id="vista-title" data-split>Medimos dos veces.<br>Colamos una.</h2>
             <p class="reveal" style="--d:240">Cada detalle se revisa antes de volverse concreto.</p>
             <div class="reveal" style="--d:340">
-                <a class="btn btn--ghost btn--lg" href="#contacto">Quiero una obra sin sorpresas <svg class="ic" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"/></svg></a>
+                <a class="btn btn--inverse btn--lg" href="#contacto"><span>Cotizar mi obra</span> <svg class="ic" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"/></svg></a>
             </div>
         </div>
     </section>
 
     <!-- ============================================================
-         7. PROYECTOS (galeria con filtros y visor de fotos)
+         8. PROYECTOS (galeria con filtros y visor de fotos)
     ============================================================ -->
-    <section class="gallery" id="proyectos" aria-labelledby="gallery-title">
+    <section class="gallery theme-dark" id="proyectos" aria-labelledby="gallery-title">
         <div class="container">
             <header class="section-head">
+                <p class="eyebrow reveal">Proyectos</p>
                 <h2 id="gallery-title" data-split>Obras que hablan por nosotros.</h2>
                 <p class="lead reveal" style="--d:120">Estructura, acabados y urbanización. Cada proyecto se documenta con fotos desde el primer día hasta la entrega.</p>
             </header>
@@ -513,96 +528,83 @@
             <ul class="g-grid" id="gGrid" data-stagger>
                 <li class="g-item reveal" data-cat="acabados">
                     <button type="button" class="g-btn" data-full="img/web/acabados-ventanal-marmol-1200.webp" data-cap="Ventanal y piso de mármol" aria-label="Ampliar foto: ventanal y piso de mármol">
-                        <img src="img/web/acabados-ventanal-marmol-800.webp" srcset="img/web/acabados-ventanal-marmol-480.webp 480w, img/web/acabados-ventanal-marmol-800.webp 800w, img/web/acabados-ventanal-marmol-1200.webp 1200w" sizes="(min-width:1024px) 25vw, 50vw" width="1200" height="1599" alt="Ventanal de aluminio y piso de mármol en un departamento con vista panorámica" loading="lazy" decoding="async" style="background:url(data:image/webp;base64,UklGRpIAAABXRUJQVlA4IIYAAACQBACdASoSABgAPwFysFKrJqSiqAqpYCAJZQAALkK5sx7o0Mh7MJagApWKWigA/rkBTxcq7gGaKtkCvS9gW3mBAYcQuiEaPKgXIlTcydzA8vj0wB6ETXimSjlJASxHwf2W+BxiSai7sijGAegWh1MdlmyaSzNVrK4fbFtnF62vhEtBNAAAAA==) center/cover">
+                        <img src="img/web/acabados-ventanal-marmol-800.webp" srcset="img/web/acabados-ventanal-marmol-480.webp 480w, img/web/acabados-ventanal-marmol-800.webp 800w, img/web/acabados-ventanal-marmol-1200.webp 1200w" sizes="(min-width:1024px) 25vw, 50vw" width="1200" height="1599" alt="Ventanal de aluminio y piso de mármol en un departamento con vista panorámica" loading="lazy" decoding="async" data-fade>
                         <span class="g-cap"><strong>Ventanal y piso de mármol</strong><span>Acabados</span></span>
                         <span class="g-zoom"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-arrows-out-simple"/></svg></span>
                     </button>
                 </li>
                 <li class="g-item reveal" data-cat="estructura">
                     <button type="button" class="g-btn" data-full="img/web/casa-estructura-concreto-block-1198.webp" data-cap="Casa en obra negra" aria-label="Ampliar foto: casa en obra negra">
-                        <img src="img/web/casa-estructura-concreto-block-800.webp" srcset="img/web/casa-estructura-concreto-block-480.webp 480w, img/web/casa-estructura-concreto-block-800.webp 800w, img/web/casa-estructura-concreto-block-1198.webp 1198w" sizes="(min-width:1024px) 25vw, 50vw" width="1198" height="1600" alt="Casa en obra negra con estructura de concreto, muros de block y escalera de acceso" loading="lazy" decoding="async" style="background:url(data:image/webp;base64,UklGRpIAAABXRUJQVlA4IIYAAADQBACdASoSABgAPwF0rVArJyQisBgIAWAgCWMAAC51XWQv7DVQ1pL9cQpoAtmvAAD+77X3yk81PNs/gD/Otf1AxLN0BR7hPoKdwNR4b3KEbxOzOY4nMBj1w2H1Qa7rfV7AcYDHH6Q7J53abZYK8pDbXPa4/07sOfFXWbmXdFxGZQciOgAAAA==) center/cover">
+                        <img src="img/web/casa-estructura-concreto-block-800.webp" srcset="img/web/casa-estructura-concreto-block-480.webp 480w, img/web/casa-estructura-concreto-block-800.webp 800w, img/web/casa-estructura-concreto-block-1198.webp 1198w" sizes="(min-width:1024px) 25vw, 50vw" width="1198" height="1600" alt="Casa en obra negra con estructura de concreto, muros de block y escalera de acceso" loading="lazy" decoding="async" data-fade>
                         <span class="g-cap"><strong>Casa en obra negra</strong><span>Estructura</span></span>
                         <span class="g-zoom"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-arrows-out-simple"/></svg></span>
                     </button>
                 </li>
                 <li class="g-item g-item--wide reveal" data-cat="estructura">
                     <button type="button" class="g-btn" data-full="img/web/obra-ductos-estructura-1156.webp" data-cap="Estructura con instalaciones" aria-label="Ampliar foto: estructura con instalaciones">
-                        <img src="img/web/obra-ductos-estructura-800.webp" srcset="img/web/obra-ductos-estructura-480.webp 480w, img/web/obra-ductos-estructura-800.webp 800w, img/web/obra-ductos-estructura-1156.webp 1156w" sizes="(min-width:1024px) 50vw, 100vw" width="1156" height="651" alt="Obra con muros de block, castillos de acero y tubería naranja de instalaciones" loading="lazy" decoding="async" style="background:url(data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAABwBACdASoYAA4APwFqrE6rJiQiMAgBYCAJZwDE3rAA8XeGHclXbxxjct0VAAD94xL8JSrA0Hm/5Ji5LvM8Qubz/9D32UxADyzGPK16zhTssP8g9QvVP4Vt+76z0terw4nxaQ8FmUrtmsMlRw7m2sPqBSRSFEHAwCT2Dft7FJogAA==) center/cover">
+                        <img src="img/web/obra-ductos-estructura-800.webp" srcset="img/web/obra-ductos-estructura-480.webp 480w, img/web/obra-ductos-estructura-800.webp 800w, img/web/obra-ductos-estructura-1156.webp 1156w" sizes="(min-width:1024px) 50vw, 100vw" width="1156" height="651" alt="Obra con muros de block, castillos de acero y tubería naranja de instalaciones" loading="lazy" decoding="async" data-fade>
                         <span class="g-cap"><strong>Estructura con instalaciones</strong><span>Estructura</span></span>
                         <span class="g-zoom"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-arrows-out-simple"/></svg></span>
                     </button>
                 </li>
                 <li class="g-item reveal" data-cat="acabados">
                     <button type="button" class="g-btn" data-full="img/web/cocina-granito-carpinteria-1200.webp" data-cap="Cocina con granito y madera" aria-label="Ampliar foto: cocina con granito y madera">
-                        <img src="img/web/cocina-granito-carpinteria-800.webp" srcset="img/web/cocina-granito-carpinteria-480.webp 480w, img/web/cocina-granito-carpinteria-800.webp 800w, img/web/cocina-granito-carpinteria-1200.webp 1200w" sizes="(min-width:1024px) 25vw, 50vw" width="1200" height="1599" alt="Cocina integral con isla de granito y carpintería de madera a la medida" loading="lazy" decoding="async" style="background:url(data:image/webp;base64,UklGRpIAAABXRUJQVlA4IIYAAABwBQCdASoSABgAPwFssFErJaSisBgIAWAgCWUAxzAPSPEmalkFgPByeSgpehF55gxTQzoAAP6vbKlDW6JaiL7arY8w/Kpb4IiMytk5NVraehbYDAEIYHaE+CMJDHQ2QX0rPjYBp0ejTjD3Qhnv/wQtqrluWTkBXgxkPqlkmNSAj2x9POAAAA==) center/cover">
+                        <img src="img/web/cocina-granito-carpinteria-800.webp" srcset="img/web/cocina-granito-carpinteria-480.webp 480w, img/web/cocina-granito-carpinteria-800.webp 800w, img/web/cocina-granito-carpinteria-1200.webp 1200w" sizes="(min-width:1024px) 25vw, 50vw" width="1200" height="1599" alt="Cocina integral con isla de granito y carpintería de madera a la medida" loading="lazy" decoding="async" data-fade>
                         <span class="g-cap"><strong>Cocina con granito y madera</strong><span>Acabados</span></span>
                         <span class="g-zoom"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-arrows-out-simple"/></svg></span>
                     </button>
                 </li>
                 <li class="g-item reveal" data-cat="estructura">
                     <button type="button" class="g-btn" data-full="img/web/escalera-concreto-cimbra-1200.webp" data-cap="Escalera de concreto armado" aria-label="Ampliar foto: escalera de concreto armado">
-                        <img src="img/web/escalera-concreto-cimbra-800.webp" srcset="img/web/escalera-concreto-cimbra-480.webp 480w, img/web/escalera-concreto-cimbra-800.webp 800w, img/web/escalera-concreto-cimbra-1200.webp 1200w" sizes="(min-width:1024px) 25vw, 50vw" width="1200" height="1599" alt="Escalera de concreto armado con cimbra de madera durante el colado" loading="lazy" decoding="async" style="background:url(data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAADQBACdASoSABgAPwF2s1OrJySiqAgBYCAJZwDG9BDSUREGGq3XIo3gDuAvYQCYAAD+7UO6kz4iX0E6LUoGjRGT4P+XEYgWfAZIqce1Dm4bC38vnt7gZ00qWJu//YMg4CXuTaDQYUMszGcwWfW6EljfiX/ldKw6zO62ExDzYAA=) center/cover">
+                        <img src="img/web/escalera-concreto-cimbra-800.webp" srcset="img/web/escalera-concreto-cimbra-480.webp 480w, img/web/escalera-concreto-cimbra-800.webp 800w, img/web/escalera-concreto-cimbra-1200.webp 1200w" sizes="(min-width:1024px) 25vw, 50vw" width="1200" height="1599" alt="Escalera de concreto armado con cimbra de madera durante el colado" loading="lazy" decoding="async" data-fade>
                         <span class="g-cap"><strong>Escalera de concreto armado</strong><span>Estructura</span></span>
                         <span class="g-zoom"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-arrows-out-simple"/></svg></span>
                     </button>
                 </li>
                 <li class="g-item reveal" data-cat="urbanizacion">
                     <button type="button" class="g-btn" data-full="img/web/urbanizacion-adoquin-1200.webp" data-cap="Adoquinado de calle" aria-label="Ampliar foto: adoquinado de calle">
-                        <img src="img/web/urbanizacion-adoquin-800.webp" srcset="img/web/urbanizacion-adoquin-480.webp 480w, img/web/urbanizacion-adoquin-800.webp 800w, img/web/urbanizacion-adoquin-1200.webp 1200w" sizes="(min-width:1024px) 25vw, 50vw" width="1200" height="1599" alt="Colocación de adoquín en la urbanización de una calle" loading="lazy" decoding="async" style="background:url(data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAACQBACdASoSABgAPwFyslIrJqSiqAqpYCAJZ0wAVdaGWUuQRl08AYby1ZPxYIAA9jRqkWcaUHm0ZS/8UQU24P1DhuAa7JafSqEhR0mJ0qlrvKYoFwwtn58mu8Oz34X/mybu63ZDp6ApcwK3ZI7cYHcCmAAAAA==) center/cover">
+                        <img src="img/web/urbanizacion-adoquin-800.webp" srcset="img/web/urbanizacion-adoquin-480.webp 480w, img/web/urbanizacion-adoquin-800.webp 800w, img/web/urbanizacion-adoquin-1200.webp 1200w" sizes="(min-width:1024px) 25vw, 50vw" width="1200" height="1599" alt="Colocación de adoquín en la urbanización de una calle" loading="lazy" decoding="async" data-fade>
                         <span class="g-cap"><strong>Adoquinado de calle</strong><span>Urbanización</span></span>
                         <span class="g-zoom"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-arrows-out-simple"/></svg></span>
                     </button>
                 </li>
                 <li class="g-item reveal" data-cat="urbanizacion">
                     <button type="button" class="g-btn" data-full="img/web/guarnicion-banqueta-armado-1200.webp" data-cap="Guarnición y banqueta" aria-label="Ampliar foto: guarnición y banqueta">
-                        <img src="img/web/guarnicion-banqueta-armado-800.webp" srcset="img/web/guarnicion-banqueta-armado-480.webp 480w, img/web/guarnicion-banqueta-armado-800.webp 800w, img/web/guarnicion-banqueta-armado-1200.webp 1200w" sizes="(min-width:1024px) 25vw, 50vw" width="1200" height="1599" alt="Armado de acero para guarnición y banqueta junto a una calle empedrada" loading="lazy" decoding="async" style="background:url(data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAADQAwCdASoSABgAPwFwrFErJiQiqA1RYCAJZwAAJGwnbyqbDjudiGAA/hOVG4ma9NrwgvrwdvLvLzUiau2ZxolsvLG0UrXLH+nGPZfXLwIuw1OZPnpn09HgGd9Qzslz2i2Aso5TxXZ1O8lPNALo5JjoHSkFAAAA) center/cover">
+                        <img src="img/web/guarnicion-banqueta-armado-800.webp" srcset="img/web/guarnicion-banqueta-armado-480.webp 480w, img/web/guarnicion-banqueta-armado-800.webp 800w, img/web/guarnicion-banqueta-armado-1200.webp 1200w" sizes="(min-width:1024px) 25vw, 50vw" width="1200" height="1599" alt="Armado de acero para guarnición y banqueta junto a una calle empedrada" loading="lazy" decoding="async" data-fade>
                         <span class="g-cap"><strong>Guarnición y banqueta</strong><span>Urbanización</span></span>
                         <span class="g-zoom"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-arrows-out-simple"/></svg></span>
                     </button>
                 </li>
                 <li class="g-item g-item--wide reveal" data-cat="acabados">
                     <button type="button" class="g-btn" data-full="img/web/sala-ventanal-carpinteria-1200.webp" data-cap="Sala con ventanales y carpintería" aria-label="Ampliar foto: sala con ventanales y carpintería">
-                        <img src="img/web/sala-ventanal-carpinteria-800.webp" srcset="img/web/sala-ventanal-carpinteria-480.webp 480w, img/web/sala-ventanal-carpinteria-800.webp 800w, img/web/sala-ventanal-carpinteria-1200.webp 1200w" sizes="(min-width:1024px) 50vw, 100vw" width="1200" height="1599" alt="Sala amplia con ventanales de piso a techo y piezas de carpintería listas para instalar" loading="lazy" decoding="async" style="background:url(data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAACwBACdASoSABgAPwFysFIrJqSiqAqpYCAJZwCw/f/gGHtwyDs2iLzbtKgpO8QAAP53Frp2kTwCwnHcXa1+cLFH4YjpdeR6JGVBi3pjVQE47Xiqtgwgt+jkafNB5NFYeoH0/CHIBXghaMY8HFCNLvIrv4U7FMY0tA9K1fBPuwAAAA==) center/cover">
+                        <img src="img/web/sala-ventanal-carpinteria-800.webp" srcset="img/web/sala-ventanal-carpinteria-480.webp 480w, img/web/sala-ventanal-carpinteria-800.webp 800w, img/web/sala-ventanal-carpinteria-1200.webp 1200w" sizes="(min-width:1024px) 50vw, 100vw" width="1200" height="1599" alt="Sala amplia con ventanales de piso a techo y piezas de carpintería listas para instalar" loading="lazy" decoding="async" data-fade>
                         <span class="g-cap"><strong>Sala con ventanales</strong><span>Acabados</span></span>
                         <span class="g-zoom"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-arrows-out-simple"/></svg></span>
                     </button>
                 </li>
                 <li class="g-item reveal" data-cat="obra-negra">
                     <button type="button" class="g-btn" data-full="img/web/rampa-armado-block-1200.webp" data-cap="Escalera exterior en proceso" aria-label="Ampliar foto: escalera exterior en proceso">
-                        <img src="img/web/rampa-armado-block-800.webp" srcset="img/web/rampa-armado-block-480.webp 480w, img/web/rampa-armado-block-800.webp 800w, img/web/rampa-armado-block-1200.webp 1200w" sizes="(min-width:1024px) 25vw, 50vw" width="1200" height="1599" alt="Escalera exterior con muros de block y acero de refuerzo en proceso" loading="lazy" decoding="async" style="background:url(data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAACwBACdASoSABgAPwFysFKrJqSiqAqpYCAJZwAALeO2KC1FB4BpstbYveFN6N8AAP7nK1T9yj5NsfwahKb9HDBFUa1lSkyy36nE9tbUVLsDK7CCj3EYFv6OHvi4etmbnYCJDiYMblpeYxs93tuHObOoagFbsNAAAAA=) center/cover">
+                        <img src="img/web/rampa-armado-block-800.webp" srcset="img/web/rampa-armado-block-480.webp 480w, img/web/rampa-armado-block-800.webp 800w, img/web/rampa-armado-block-1200.webp 1200w" sizes="(min-width:1024px) 25vw, 50vw" width="1200" height="1599" alt="Escalera exterior con muros de block y acero de refuerzo en proceso" loading="lazy" decoding="async" data-fade>
                         <span class="g-cap"><strong>Escalera exterior en proceso</strong><span>Obra negra</span></span>
                         <span class="g-zoom"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-arrows-out-simple"/></svg></span>
                     </button>
                 </li>
                 <li class="g-item reveal" data-cat="obra-negra">
                     <button type="button" class="g-btn" data-full="img/web/muros-block-terreno-1200.webp" data-cap="Muros de block en terreno" aria-label="Ampliar foto: muros de block en terreno">
-                        <img src="img/web/muros-block-terreno-800.webp" srcset="img/web/muros-block-terreno-480.webp 480w, img/web/muros-block-terreno-800.webp 800w, img/web/muros-block-terreno-1200.webp 1200w" sizes="(min-width:1024px) 25vw, 50vw" width="1200" height="1599" alt="Muros de block levantándose sobre un terreno con castillos de acero" loading="lazy" decoding="async" style="background:url(data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAACwBACdASoSABgAPwFurlArJiQiqA1RYCAJZwDE2AzhAs/BESyjwNlo3v2tjogAAP6EALMZoUPTHbd5479zcGFBtslKXTxPlyNKU0oTt1rABwusF05pW/dZtclKb1pwyqELry6U3OAXJ1ekynDfbLypFYvLvDgY25Jxqu0w0U+rbZQM75pt6UxPp963YAAA) center/cover">
+                        <img src="img/web/muros-block-terreno-800.webp" srcset="img/web/muros-block-terreno-480.webp 480w, img/web/muros-block-terreno-800.webp 800w, img/web/muros-block-terreno-1200.webp 1200w" sizes="(min-width:1024px) 25vw, 50vw" width="1200" height="1599" alt="Muros de block levantándose sobre un terreno con castillos de acero" loading="lazy" decoding="async" data-fade>
                         <span class="g-cap"><strong>Muros de block en terreno</strong><span>Obra negra</span></span>
                         <span class="g-zoom"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-arrows-out-simple"/></svg></span>
                     </button>
                 </li>
             </ul>
-
-            <div class="section-cta reveal">
-                <a class="btn btn--primary btn--lg" data-magnetic href="#contacto">Quiero algo así para mi casa <svg class="ic" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"/></svg></a>
-            </div>
         </div>
     </section>
 
     <!-- ============================================================
-         8. NOSOTROS (foto + valores + cifras)
+         9. NOSOTROS (fotos con revelado + valores)
     ============================================================ -->
-    <section class="about" id="nosotros" aria-labelledby="about-title">
+    <section class="about theme-light" id="nosotros" aria-labelledby="about-title">
         <div class="container about-grid">
-            <div class="about-media">
-                <figure class="about-photo about-photo--main reveal reveal--clip">
-                    <img src="img/web/equipo-ingenieria-obra-800.webp" srcset="img/web/equipo-ingenieria-obra-480.webp 480w, img/web/equipo-ingenieria-obra-800.webp 800w, img/web/equipo-ingenieria-obra-1200.webp 1200w" sizes="(min-width:1024px) 40vw, 90vw" width="1200" height="1200" alt="Ingeniero y cuadrilla con casco y chaleco de seguridad supervisando una obra" loading="lazy" decoding="async" style="background:url(data:image/webp;base64,UklGRuQAAABXRUJQVlA4INgAAABwBQCdASoYABgAPwFqsFGrJaSisBgIAWAgCWIAvkgQ7/KC2DrNmHzxhW+foYSJSo5ZZBGAAP7qdOEJ1Xuzc+UPbns0IPY3bK0WYmHjL7feor4Jn02Dd0B26tVn3V1DZ69RSQIVPxhK+NRabfrOioZjv3VO5euPePR3XB/NoUZlCj+ULal246A/f9HRTFfYm7EGeGr+G+INYGptwEy/YeBpQyghsL1z0kZfv/F6Zi2ZAfGRLJ4sO40b2nH72ngDtjm5yXMQKlbOQIeiwult5sJuF2IyxQ4cAAA=) center/cover" data-parallax="0.06">
-                </figure>
-                <figure class="about-photo about-photo--sub reveal reveal--clip" style="--d:200">
-                    <img src="img/web/cuadrilla-cimentacion-800.webp" srcset="img/web/cuadrilla-cimentacion-480.webp 480w, img/web/cuadrilla-cimentacion-800.webp 800w, img/web/cuadrilla-cimentacion-1200.webp 1200w" sizes="(min-width:1024px) 20vw, 45vw" width="1200" height="1595" alt="Trabajador de la cuadrilla en la cimentación de una obra sobre piedra y acero" loading="lazy" decoding="async" style="background:url(data:image/webp;base64,UklGRrAAAABXRUJQVlA4IKQAAAAQBQCdASoSABgAPwF0r1KrJqQiqAqpYCAJZ1ewjYh5gRKwkmX86nKP5sb2P8w+VkXMAP7irRi9FfzPcZsNkTmkZgVWu8vhvZUEitXRxSB4meH9Z60x5XvPtg2cnFTwRA0EFrpSZUHTj7xUF25pxc3jqo7RmISp0bOiQDPxb2dJyWWxl4mA3MIABpnn4mPqwAPtEUErVry0F44YU8pxS0e06AVAAA==) center/cover" data-parallax="-0.05">
-                </figure>
-            </div>
-
             <div class="about-copy">
                 <h2 id="about-title" data-split>Ingeniería en sitio, no solo en oficina.</h2>
                 <p class="lead reveal" style="--d:100">Somos un equipo de constructores que cuida tu obra como si fuera propia: presencia diaria, comunicación directa y resultados que se pueden medir.</p>
@@ -626,93 +628,70 @@
                     </li>
                 </ul>
             </div>
-        </div>
 
-        <!-- EDITAR: estos compromisos son de ejemplo. Ajusta las cifras a lo que el negocio realmente ofrece. -->
-        <div class="container">
-            <dl class="stats reveal">
-                <div class="stat">
-                    <dt>Para recibir tu presupuesto</dt>
-                    <dd><span class="count" data-count="48" data-suffix="h">48h</span></dd>
+            <div class="about-media">
+                <span class="about-block" aria-hidden="true"></span>
+                <figure class="about-photo about-photo--main wipe reveal--wipe">
+                    <img src="img/web/equipo-ingenieria-obra-800.webp" srcset="img/web/equipo-ingenieria-obra-480.webp 480w, img/web/equipo-ingenieria-obra-800.webp 800w, img/web/equipo-ingenieria-obra-1200.webp 1200w" sizes="(min-width:1024px) 38vw, 90vw" width="1200" height="1200" alt="Ingeniero y cuadrilla con casco y chaleco de seguridad supervisando una obra" loading="lazy" decoding="async" data-fade data-parallax="0.06">
+                </figure>
+                <figure class="about-photo about-photo--sub wipe reveal--wipe" style="--d:220">
+                    <img src="img/web/cuadrilla-cimentacion-800.webp" srcset="img/web/cuadrilla-cimentacion-480.webp 480w, img/web/cuadrilla-cimentacion-800.webp 800w, img/web/cuadrilla-cimentacion-1200.webp 1200w" sizes="(min-width:1024px) 20vw, 45vw" width="1200" height="1595" alt="Trabajador de la cuadrilla en la cimentación de una obra sobre piedra y acero" loading="lazy" decoding="async" data-fade data-parallax="-0.05">
+                </figure>
+                <div class="badge seal" aria-hidden="true">
+                    <img class="seal-ring" src="img/brand/anillo-guinda.webp" alt="" width="1000" height="1000" loading="lazy">
+                    <img class="seal-emblem" src="img/brand/emblema-guinda.webp" alt="" width="1000" height="1000" loading="lazy">
                 </div>
-                <div class="stat">
-                    <dt>Presupuestos por escrito y por partidas</dt>
-                    <dd><span class="count" data-count="100" data-suffix="%">100%</span></dd>
-                </div>
-                <div class="stat">
-                    <dt>Servicios con un solo equipo</dt>
-                    <dd><span class="count" data-count="6">6</span></dd>
-                </div>
-                <div class="stat">
-                    <dt>Etapas documentadas con fotos</dt>
-                    <dd><span class="count" data-count="5">5</span></dd>
-                </div>
-            </dl>
+            </div>
         </div>
     </section>
 
     <!-- ============================================================
-         9. PROCESO (linea de tiempo que se dibuja con el scroll)
+         10. PROCESO (linea de tiempo horizontal que se dibuja con el scroll)
     ============================================================ -->
-    <section class="process" id="proceso" aria-labelledby="process-title">
-        <div class="container process-grid">
-            <div class="process-head">
-                <p class="eyebrow reveal">Cómo trabajamos</p>
+    <section class="process theme-wine" id="proceso" aria-labelledby="process-title">
+        <div class="container">
+            <header class="section-head">
                 <h2 id="process-title" data-split>Cuatro pasos entre tu idea y las llaves.</h2>
                 <p class="lead reveal" style="--d:160">Un método claro para que sepas qué sigue, cuánto cuesta y cuándo se termina.</p>
-                <div class="reveal" style="--d:240">
-                    <a class="btn btn--primary btn--lg" data-magnetic href="#contacto">Agendar visita a mi terreno <svg class="ic" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"/></svg></a>
-                </div>
-            </div>
+            </header>
 
-            <ol class="timeline" id="timeline">
-                <li class="t-item">
-                    <span class="t-node"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-map-pin-line"/></svg></span>
-                    <div class="t-body">
-                        <h3>Visitamos tu terreno o inmueble</h3>
-                        <p>Revisamos medidas, condiciones y necesidades. La visita no tiene costo ni compromiso.</p>
-                    </div>
+            <ol class="steps" id="steps">
+                <li class="step">
+                    <span class="step-node"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-map-pin-line"/></svg></span>
+                    <h3>Visitamos tu terreno o inmueble</h3>
+                    <p>Revisamos medidas, condiciones y necesidades. La visita no tiene costo ni compromiso.</p>
                 </li>
-                <li class="t-item">
-                    <span class="t-node"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-receipt"/></svg></span>
-                    <div class="t-body">
-                        <h3>Te entregamos presupuesto y plan</h3>
-                        <p>Alcances, materiales, tiempos y costos por escrito antes de poner el primer ladrillo.</p>
-                    </div>
+                <li class="step">
+                    <span class="step-node"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-receipt"/></svg></span>
+                    <h3>Te entregamos presupuesto y plan</h3>
+                    <p>Alcances, materiales, tiempos y costos por escrito antes de poner el primer ladrillo.</p>
                 </li>
-                <li class="t-item">
-                    <span class="t-node"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-hard-hat"/></svg></span>
-                    <div class="t-body">
-                        <h3>Construimos con supervisión</h3>
-                        <p>Avance semanal con fotos y control de calidad en cada etapa de la obra.</p>
-                    </div>
+                <li class="step">
+                    <span class="step-node"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-hard-hat"/></svg></span>
+                    <h3>Construimos con supervisión</h3>
+                    <p>Avance semanal con fotos y control de calidad en cada etapa de la obra.</p>
                 </li>
-                <li class="t-item">
-                    <span class="t-node"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-shield-check"/></svg></span>
-                    <div class="t-body">
-                        <h3>Entregamos y respaldamos</h3>
-                        <p>Revisión final contigo, obra limpia y garantía por escrito sobre el trabajo realizado.</p>
-                    </div>
+                <li class="step">
+                    <span class="step-node"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-shield-check"/></svg></span>
+                    <h3>Entregamos y respaldamos</h3>
+                    <p>Revisión final contigo, obra limpia y garantía por escrito sobre el trabajo realizado.</p>
                 </li>
             </ol>
         </div>
     </section>
 
     <!-- ============================================================
-         10. INGENIERIA Y PLANEACION (blueprint animado)
+         11. INGENIERIA Y PLANEACION (plano con barrido de escaneo)
     ============================================================ -->
-    <section class="planning" id="ingenieria" aria-labelledby="planning-title">
+    <section class="planning theme-dark" id="ingenieria" aria-labelledby="planning-title">
         <div class="container planning-grid">
-            <div class="blueprint reveal reveal--clip">
-                <img src="img/web/planos-blueprint-800.webp" srcset="img/web/planos-blueprint-480.webp 480w, img/web/planos-blueprint-800.webp 800w" sizes="(min-width:1024px) 520px, 90vw" width="800" height="1066" alt="Plano arquitectónico de planta con cotas, ejes y nomenclatura de muros, puertas y ventanas" loading="lazy" decoding="async" style="background:url(data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAADwBACdASoSABgAPwF2s1OrJySkKAgBYCAJaQDMWBEJPXQ0aA/y+tqd/JHBtJTGh4AA/uVsmnHmzY275z6+QqogBeonyLeyUQoBLkGSUtZj9KXLhr7uNZzGgCQ9rwik/+6YoAAA) center/cover">
+            <div class="blueprint wipe reveal--wipe">
+                <img src="img/web/planos-blueprint-800.webp" srcset="img/web/planos-blueprint-480.webp 480w, img/web/planos-blueprint-800.webp 800w" sizes="(min-width:1024px) 520px, 90vw" width="800" height="1066" alt="Plano arquitectónico de planta con cotas, ejes y nomenclatura de muros, puertas y ventanas" loading="lazy" decoding="async" data-fade>
                 <span class="scan" aria-hidden="true"></span>
-                <span class="crop crop--tl" aria-hidden="true"></span>
-                <span class="crop crop--tr" aria-hidden="true"></span>
-                <span class="crop crop--bl" aria-hidden="true"></span>
-                <span class="crop crop--br" aria-hidden="true"></span>
             </div>
 
             <div class="planning-copy">
+                <p class="eyebrow reveal">Ingeniería y planeación</p>
                 <h2 id="planning-title" data-split>Planeamos cada detalle antes de colar.</h2>
                 <p class="lead reveal" style="--d:100">Revisamos planos arquitectónicos, estructurales y de instalaciones para detectar los problemas en papel, no en obra.</p>
                 <ul class="ticks" data-stagger>
@@ -723,7 +702,7 @@
                 </ul>
                 <div class="reveal" style="--d:300">
                     <a class="btn btn--ghost btn--lg" data-wa data-wa-msg="Hola, ya tengo planos y quiero que revisen mi proyecto para cotizarlo." href="#contacto">
-                        <svg class="ic" aria-hidden="true" focusable="false"><use href="#i-whatsapp-logo"/></svg> Quiero que revisen mis planos
+                        <svg class="ic" aria-hidden="true" focusable="false"><use href="#i-whatsapp-logo"/></svg> <span>Revisar mis planos</span>
                     </a>
                 </div>
             </div>
@@ -731,61 +710,72 @@
     </section>
 
     <!-- ============================================================
-         11. BANDA DE LLAMADA A LA ACCION
+         12. BANDA DE LLAMADA A LA ACCION
     ============================================================ -->
-    <section class="cta-band" aria-labelledby="cta-title">
-        <div class="cta-stripes" aria-hidden="true"></div>
+    <section class="cta-band theme-wine" aria-labelledby="cta-title">
+        <div class="cta-seal seal" aria-hidden="true">
+            <img class="seal-ring" src="img/brand/anillo-blanco.webp" alt="" width="1000" height="1000" loading="lazy">
+            <img class="seal-emblem" src="img/brand/emblema-blanco.webp" alt="" width="1000" height="1000" loading="lazy">
+        </div>
         <div class="container cta-inner">
             <h2 id="cta-title" data-split>Tu obra puede empezar con una visita.</h2>
             <p class="reveal" style="--d:200">Medimos, platicamos tus ideas y te entregamos un presupuesto por escrito. Sin compromiso.</p>
             <div class="reveal" style="--d:300">
-                <a class="btn btn--dark btn--lg" data-magnetic data-wa data-wa-msg="Hola, quiero agendar una visita para que revisen mi obra y me den un presupuesto." href="#contacto">
-                    <svg class="ic" aria-hidden="true" focusable="false"><use href="#i-calendar-check"/></svg> Agendar mi visita por WhatsApp
+                <a class="btn btn--inverse btn--lg" data-wa data-wa-msg="Hola, quiero agendar una visita para que revisen mi obra y me den un presupuesto." href="#contacto">
+                    <svg class="ic" aria-hidden="true" focusable="false"><use href="#i-calendar-check"/></svg> <span>Agendar visita por WhatsApp</span>
                 </a>
             </div>
         </div>
     </section>
 
     <!-- ============================================================
-         12. PREGUNTAS FRECUENTES (acordeon)
+         13. PREGUNTAS FRECUENTES (acordeon)
     ============================================================ -->
-    <section class="faq" id="faq" aria-labelledby="faq-title">
-        <div class="container">
-            <h2 id="faq-title" data-split>Preguntas frecuentes antes de arrancar.</h2>
+    <section class="faq theme-light" id="faq" aria-labelledby="faq-title">
+        <div class="container faq-layout">
+            <header class="faq-head">
+                <h2 id="faq-title" data-split>Preguntas frecuentes antes de arrancar.</h2>
+                <p class="lead reveal" style="--d:120">¿Tienes otra duda? Escríbenos y te respondemos el mismo día.</p>
+                <div class="reveal" style="--d:200">
+                    <a class="btn btn--ghost btn--lg" data-wa data-wa-msg="Hola, tengo una duda sobre mi proyecto." href="#contacto">
+                        <svg class="ic" aria-hidden="true" focusable="false"><use href="#i-whatsapp-logo"/></svg> <span>Escribir por WhatsApp</span>
+                    </a>
+                </div>
+            </header>
 
             <div class="faq-grid" data-stagger>
                 <div class="faq-item reveal">
-                    <h3><button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a1" id="faq-q1">¿Cuánto cuesta construir o remodelar?<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-plus"/></svg></button></h3>
+                    <h3><button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a1" id="faq-q1"><span>¿Cuánto cuesta construir o remodelar?</span><i class="faq-ic" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-plus"/></svg></i></button></h3>
                     <div class="faq-a" id="faq-a1" role="region" aria-labelledby="faq-q1"><div><p>Depende de los metros cuadrados, los materiales y los acabados. Después de visitar tu proyecto te entregamos un presupuesto por partidas, por escrito y sin compromiso.</p></div></div>
                 </div>
                 <div class="faq-item reveal">
-                    <h3><button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a2" id="faq-q2">¿Cuánto tiempo tarda una obra?<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-plus"/></svg></button></h3>
+                    <h3><button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a2" id="faq-q2"><span>¿Cuánto tiempo tarda una obra?</span><i class="faq-ic" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-plus"/></svg></i></button></h3>
                     <div class="faq-a" id="faq-a2" role="region" aria-labelledby="faq-q2"><div><p>Una remodelación puede tomar algunas semanas y una construcción nueva varios meses. Antes de iniciar te entregamos un programa de obra con fechas claras.</p></div></div>
                 </div>
                 <div class="faq-item reveal">
-                    <h3><button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a3" id="faq-q3">¿Trabajan con mis planos o los hacen ustedes?<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-plus"/></svg></button></h3>
+                    <h3><button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a3" id="faq-q3"><span>¿Trabajan con mis planos o los hacen ustedes?</span><i class="faq-ic" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-plus"/></svg></i></button></h3>
                     <div class="faq-a" id="faq-a3" role="region" aria-labelledby="faq-q3"><div><p>Ambas opciones. Construimos con los planos que ya tengas y también coordinamos el proyecto arquitectónico, estructural y de instalaciones.</p></div></div>
                 </div>
                 <div class="faq-item reveal">
-                    <h3><button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a4" id="faq-q4">¿Ofrecen garantía por el trabajo?<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-plus"/></svg></button></h3>
+                    <h3><button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a4" id="faq-q4"><span>¿Ofrecen garantía por el trabajo?</span><i class="faq-ic" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-plus"/></svg></i></button></h3>
                     <div class="faq-a" id="faq-a4" role="region" aria-labelledby="faq-q4"><div><p>Sí. Entregamos garantía por escrito sobre la mano de obra y te orientamos sobre la garantía de los materiales instalados.</p></div></div>
                 </div>
                 <div class="faq-item reveal">
-                    <h3><button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a5" id="faq-q5">¿Puedo ver los avances de mi obra?<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-plus"/></svg></button></h3>
+                    <h3><button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a5" id="faq-q5"><span>¿Puedo ver los avances de mi obra?</span><i class="faq-ic" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-plus"/></svg></i></button></h3>
                     <div class="faq-a" id="faq-a5" role="region" aria-labelledby="faq-q5"><div><p>Claro. Compartimos fotos y reportes de avance por WhatsApp y puedes visitar la obra cuando quieras.</p></div></div>
                 </div>
                 <div class="faq-item reveal">
-                    <h3><button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a6" id="faq-q6">¿En qué zonas trabajan?<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-plus"/></svg></button></h3>
-                    <div class="faq-a" id="faq-a6" role="region" aria-labelledby="faq-q6"><div><p>Atendemos proyectos en la región y zonas cercanas. Escríbenos tu ubicación y te confirmamos la cobertura el mismo día.</p></div></div>
+                    <h3><button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a6" id="faq-q6"><span>¿En qué zonas trabajan?</span><i class="faq-ic" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-plus"/></svg></i></button></h3>
+                    <div class="faq-a" id="faq-a6" role="region" aria-labelledby="faq-q6"><div><p>Atendemos proyectos en Querétaro y zonas cercanas. Escríbenos tu ubicación y te confirmamos la cobertura el mismo día.</p></div></div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ============================================================
-         13. CONTACTO (cotizador guiado de 3 pasos que abre WhatsApp)
+         14. CONTACTO (cotizador guiado de 3 pasos que abre WhatsApp)
     ============================================================ -->
-    <section class="contact" id="contacto" aria-labelledby="contact-title">
+    <section class="contact theme-dark" id="contacto" aria-labelledby="contact-title">
         <div class="container contact-grid">
             <div class="contact-copy">
                 <p class="eyebrow reveal">Contacto</p>
@@ -820,7 +810,7 @@
                 </ul>
             </div>
 
-            <form class="quote reveal" id="quoteForm" novalidate aria-labelledby="quote-title" style="--d:120">
+            <form class="quote theme-light reveal" id="quoteForm" novalidate aria-labelledby="quote-title" style="--d:120">
                 <div class="quote-head">
                     <h3 id="quote-title">Cotiza tu proyecto</h3>
                     <p class="quote-step" id="quoteStep" aria-live="polite">Paso 1 de 3</p>
@@ -891,7 +881,7 @@
                 </fieldset>
 
                 <div class="quote-actions">
-                    <button type="button" class="btn btn--ghost" id="qBack" hidden><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-arrow-left"/></svg> Atrás</button>
+                    <button type="button" class="btn btn--ghost" id="qBack" hidden><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-arrow-left"/></svg> <span>Atrás</span></button>
                     <button type="submit" class="btn btn--primary btn--lg" id="qNext">
                         <span class="btn-label" id="qNextLabel">Continuar <svg class="ic" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span>
                         <span class="btn-spinner" aria-hidden="true"></span>
@@ -906,12 +896,12 @@
 <!-- ============================================================
      FOOTER
 ============================================================ -->
-<footer class="site-footer">
+<footer class="site-footer theme-dark">
     <div class="container footer-grid">
         <div class="footer-brand">
-            <a class="brand" href="#inicio" aria-label="Construcción y Remodelación, ir al inicio">
-                <svg class="brand-mark" aria-hidden="true"><use href="#logo-mark"/></svg>
-                <span class="brand-text"><strong>CONSTRUCCIÓN</strong><small>Y REMODELACIÓN</small></span>
+            <a class="brand" href="#inicio" aria-label="Construcciones Martinez, ir al inicio">
+                <img class="brand-seal" src="img/brand/sello-guinda-96.webp" srcset="img/brand/sello-guinda-96.webp 1x, img/brand/sello-guinda-256.webp 2x" width="56" height="56" alt="" loading="lazy">
+                <span class="brand-text"><small>Construcciones</small><strong>Martinez</strong></span>
             </a>
             <p>Construimos y remodelamos con planeación, supervisión y acabados que se notan. Tu obra, en manos de ingeniería.</p>
         </div>
@@ -944,6 +934,7 @@
                 <li><a data-wa data-wa-msg="Hola, vi su página web y quiero información." href="#contacto">WhatsApp</a></li>
                 <li><a data-tel href="#contacto" data-phone-text>(000) 000 0000</a></li>
                 <li><a data-email href="mailto:contacto@tudominio.com" data-email-text>contacto@tudominio.com</a></li>
+                <li>Querétaro, México</li>
             </ul>
             <div class="social">
                 <!-- EDITAR: enlaces reales de redes sociales -->
@@ -954,10 +945,10 @@
         </div>
     </div>
 
-    <p class="footer-wordmark" aria-hidden="true"><span>CONSTRUCCIÓN</span> <span>Y REMODELACIÓN</span></p>
+    <p class="footer-mark reveal" aria-hidden="true"><span>Martinez</span></p>
 
     <div class="container footer-bottom">
-        <p>&copy; <span id="year">2026</span> Construcción y Remodelación. Todos los derechos reservados.</p>
+        <p>&copy; <span id="year">2026</span> Construcciones Martinez. Todos los derechos reservados.</p>
         <p><a href="#">Aviso de privacidad</a></p>
     </div>
 </footer>

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   CONSTRUCCIÓN Y REMODELACIÓN
+   CONSTRUCCIONES MARTINEZ
    Lógica de interacción y animación (JavaScript vanilla).
    Única dependencia: vendor/lenis.min.js (scroll suave, alojado en el proyecto).
    Si no carga, la página funciona igual con scroll nativo.
@@ -11,11 +11,12 @@
    03. Loader con progreso
    04. Scroll suave y anclas
    05. Header, indicador de navegación, menú móvil
-   06. Revelado al hacer scroll y titulares por palabra
-   07. Hero: rotador, reel, partículas, parallax
-   08. Interacciones: foco de luz, botones magnéticos, inclinación 3D
+   06. Revelado al hacer scroll, titulares por palabra, imágenes
+   07. Hero: rotador de verbos
+   08. Servicios (paneles que se expanden)
    09. Contadores
-   10. Bucle de scroll (progreso, parallax, manifiesto, timeline, etapas)
+   10. Bucle de scroll (progreso, header, hero, parallax, manifiesto,
+       franja de marca, sellos, proceso, etapas)
    11. Preguntas frecuentes
    12. Galería: filtros y visor de fotos
    13. Cotizador guiado de 3 pasos
@@ -37,7 +38,7 @@
        se actualizan solos.
     ====================================================================== */
     const CONFIG = {
-        brand: 'Construcción y Remodelación',
+        brand: 'Construcciones Martinez',
         whatsapp: '520000000000',        // país + número, sin "+" ni espacios (ej. 5214421234567)
         phoneDisplay: '(000) 000 0000',  // cómo se muestra el teléfono en la página
         email: 'contacto@tudominio.com'
@@ -53,6 +54,7 @@
 
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const desktop = window.matchMedia('(min-width: 1024px)');
 
     /* Ejecuta un módulo de forma aislada: si uno falla, el resto sigue vivo */
     const safe = (fn, name) => {
@@ -66,7 +68,8 @@
     const icon = (name) =>
         '<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-' + name + '"/></svg>';
 
-    let lenis = null;   // instancia de scroll suave (si está disponible)
+    let lenis = null;          // instancia de scroll suave (si está disponible)
+    let holdHeaderUntil = 0;   // mantiene visible el header mientras viaja un ancla
 
     /* ======================================================================
        02. ENLACES DE CONTACTO
@@ -91,9 +94,9 @@
 
     /* ======================================================================
        03. LOADER
-       Progreso suave 0 a 100 con spinner. Termina cuando la página cargó, la
-       imagen del hero está decodificada y pasó un tiempo mínimo para que la
-       animación se aprecie.
+       Progreso suave 0 a 100 sobre un telón guinda. Termina cuando la página
+       cargó, la imagen del hero está decodificada y pasó un tiempo mínimo
+       para que la animación se aprecie. Después el telón sube en dos capas.
     ====================================================================== */
     function initLoader() {
         return new Promise((resolve) => {
@@ -103,9 +106,9 @@
             if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
             if (!location.hash) window.scrollTo(0, 0);
 
-            if (!loader) { root.classList.remove('is-loading'); resolve(); return; }
+            if (!loader) { root.classList.remove('is-loading'); root.classList.add('is-ready'); resolve(); return; }
 
-            const MIN_TIME = reduceMotion ? 400 : 1700;
+            const MIN_TIME = reduceMotion ? 400 : 1900;
             const MAX_TIME = 6500;                       // salida de emergencia
             const t0 = performance.now();
             let pageReady = document.readyState === 'complete';
@@ -128,7 +131,7 @@
                 root.classList.remove('is-loading');
                 root.classList.add('is-ready');
                 if (lenis) lenis.start();
-                setTimeout(() => { loader.hidden = true; }, 1300);
+                setTimeout(() => { loader.hidden = true; }, 2100);
                 resolve();
             };
 
@@ -163,11 +166,12 @@
     }
 
     function scrollToTarget(target, immediate) {
-        const headerH = ($('#siteHeader') || { offsetHeight: 68 }).offsetHeight;
+        const headerH = ($('#siteHeader') || { offsetHeight: 76 }).offsetHeight;
+        holdHeaderUntil = performance.now() + 2000;
         if (lenis) {
             lenis.start();
             lenis.scrollTo(target, {
-                offset: -(headerH - 1), duration: immediate ? 0 : 1.6, immediate: !!immediate,
+                offset: -(headerH - 1), duration: immediate ? 0 : 1.7, immediate: !!immediate,
                 easing: (t) => 1 - Math.pow(1 - t, 4)
             });
         } else {
@@ -176,6 +180,7 @@
     }
 
     function scrollToY(y) {
+        holdHeaderUntil = performance.now() + 1600;
         if (lenis) { lenis.start(); lenis.scrollTo(y, { duration: 1.3, easing: (t) => 1 - Math.pow(1 - t, 4) }); }
         else window.scrollTo({ top: y, behavior: reduceMotion ? 'auto' : 'smooth' });
     }
@@ -208,7 +213,7 @@
 
     let refreshNavPill = () => {};
 
-    /* Píldora que se desliza hacia el enlace activo o bajo el cursor */
+    /* Línea guinda que se desliza hacia el enlace activo o bajo el cursor */
     function initNavPill() {
         const nav = $('#nav');
         const pill = $('#navPill');
@@ -254,11 +259,13 @@
 
         const open = () => {
             menu.hidden = false;
-            requestAnimationFrame(() => menu.classList.add('is-open'));
+            requestAnimationFrame(() => requestAnimationFrame(() => menu.classList.add('is-open')));
             btn.setAttribute('aria-expanded', 'true');
             btn.setAttribute('aria-label', 'Cerrar menú');
             root.style.overflow = 'hidden';
             root.classList.add('menu-open');
+            const header = $('#siteHeader');
+            if (header) header.classList.remove('is-hidden');
             if (lenis) lenis.stop();
         };
         const close = () => {
@@ -269,7 +276,7 @@
             root.style.overflow = '';
             root.classList.remove('menu-open');
             if (lenis) lenis.start();
-            setTimeout(() => { if (!menu.classList.contains('is-open')) menu.hidden = true; }, 420);
+            setTimeout(() => { if (!menu.classList.contains('is-open')) menu.hidden = true; }, 900);
         };
 
         btn.addEventListener('click', () => {
@@ -279,7 +286,7 @@
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') { close(); btn.focus(); }
         });
-        window.matchMedia('(min-width: 1024px)').addEventListener('change', (e) => { if (e.matches) close(); });
+        desktop.addEventListener('change', (e) => { if (e.matches) close(); });
     }
 
     function initActiveNav() {
@@ -346,7 +353,7 @@
             $$(':scope > .reveal', group).forEach((el, i) => el.style.setProperty('--d', String(i * 90)));
         });
 
-        const targets = $$('.reveal, [data-split]').filter((el) => !el.hasAttribute('data-hero'));
+        const targets = $$('.reveal, .wipe, [data-split]').filter((el) => !el.hasAttribute('data-hero'));
         if (reduceMotion || !('IntersectionObserver' in window)) {
             targets.forEach((el) => el.classList.add('is-in'));
             return;
@@ -365,11 +372,21 @@
         $$('[data-hero]').forEach((el) => el.classList.add('is-in'));
     }
 
-    /* ======================================================================
-       07. HERO
-    ====================================================================== */
+    /* Las fotos aparecen con un fundido cuando terminan de cargar */
+    function initImages() {
+        $$('img[data-fade]').forEach((img) => {
+            const done = () => img.classList.add('is-loaded');
+            if (img.complete && img.naturalWidth) done();
+            else {
+                img.addEventListener('load', done, { once: true });
+                img.addEventListener('error', done, { once: true });
+            }
+        });
+    }
 
-    /* 07.a Rotador de verbos del titular */
+    /* ======================================================================
+       07. HERO: ROTADOR DE VERBOS
+    ====================================================================== */
     function initRotator() {
         const words = $$('.rot-word');
         if (words.length < 2 || reduceMotion) return;
@@ -387,219 +404,30 @@
         }, 2900);
     }
 
-    /* 07.b Reel de etapas de obra (cambia solo; también se puede elegir) */
-    function initReel() {
-        const reel = $('#reel');
-        const slides = $$('.reel-slide');
-        const dots = $$('.reel-dot');
-        const caption = $('#reelCaption');
-        if (!reel || !slides.length) return;
-
-        const labels = dots.map((d) => d.getAttribute('aria-label'));
-        const DURATION = 4600;
-        let index = 0;
-        let timer = null;
-
-        const show = (n) => {
-            index = (n + slides.length) % slides.length;
-            slides.forEach((s, i) => s.classList.toggle('is-active', i === index));
-            dots.forEach((d, i) => {
-                d.classList.remove('is-active');
-                if (i === index) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current');
-            });
-            void dots[index].offsetWidth;            // reinicia la animación de la barra
-            dots[index].classList.add('is-active');
-            if (caption) caption.textContent = labels[index];
-        };
-        const stop = () => { clearTimeout(timer); timer = null; };
-        const play = () => {
-            stop();
-            if (reduceMotion) return;
-            timer = setTimeout(() => { show(index + 1); play(); }, DURATION);
-        };
-
-        dots.forEach((d, i) => d.addEventListener('click', () => { show(i); play(); }));
-        show(0);
-
-        // Solo corre mientras el reel está visible
-        if ('IntersectionObserver' in window) {
-            new IntersectionObserver(([entry]) => { entry.isIntersecting ? play() : stop(); }).observe(reel);
-        } else {
-            play();
-        }
-    }
-
-    /* 07.c Partículas (brasas / polvo de obra) en canvas */
-    function initEmbers() {
-        const canvas = $('#embers');
-        const hero = $('#inicio');
-        if (!canvas || !hero || reduceMotion) return;
-        const ctx = canvas.getContext('2d');
-        if (!ctx) return;
-
-        let w = 0, h = 0, raf = 0, last = 0, running = false;
-        const particles = [];
-        const mouse = { x: -9999, y: -9999 };
-
-        const spawn = (anywhere) => ({
-            x: Math.random() * w,
-            y: anywhere ? Math.random() * h : h + 12,
-            r: .6 + Math.random() * 1.9,
-            vy: .16 + Math.random() * .5,
-            sway: Math.random() * Math.PI * 2,
-            swaySpeed: .02 + Math.random() * .035,
-            swayAmp: .12 + Math.random() * .38,
-            alpha: .25 + Math.random() * .6,
-            twinkle: Math.random() * Math.PI * 2,
-            warm: Math.random() < .72
-        });
-
-        const resize = () => {
-            const dpr = Math.min(window.devicePixelRatio || 1, 2);
-            w = canvas.clientWidth;
-            h = canvas.clientHeight;
-            canvas.width = Math.round(w * dpr);
-            canvas.height = Math.round(h * dpr);
-            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-            const target = Math.round(clamp(w / 20, 26, 78));
-            while (particles.length < target) particles.push(spawn(true));
-            particles.length = target;
-        };
-
-        const frame = (now) => {
-            if (!running) return;
-            const dt = Math.min((now - last) / 16.67, 3);
-            last = now;
-            ctx.clearRect(0, 0, w, h);
-            ctx.globalCompositeOperation = 'lighter';
-
-            for (let i = 0; i < particles.length; i++) {
-                const p = particles[i];
-                p.y -= p.vy * dt;
-                p.sway += p.swaySpeed * dt;
-                p.x += Math.sin(p.sway) * p.swayAmp * dt;
-
-                // Las partículas se apartan del cursor
-                const dx = p.x - mouse.x;
-                const dy = p.y - mouse.y;
-                const d2 = dx * dx + dy * dy;
-                if (d2 < 14400) {
-                    const d = Math.sqrt(d2) || 1;
-                    const f = (120 - d) / 120;
-                    p.x += (dx / d) * f * 2.4 * dt;
-                    p.y += (dy / d) * f * 2.4 * dt;
-                }
-
-                if (p.y < -14 || p.x < -24 || p.x > w + 24) { particles[i] = spawn(false); continue; }
-
-                const tw = .65 + .35 * Math.sin(now * .002 + p.twinkle);
-                const a = p.alpha * tw;
-                const rgb = p.warm ? '239,161,51' : '255,255,255';
-                ctx.fillStyle = 'rgba(' + rgb + ',' + (a * .16).toFixed(3) + ')';
-                ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 4.2, 0, 6.2832); ctx.fill();
-                ctx.fillStyle = 'rgba(' + rgb + ',' + a.toFixed(3) + ')';
-                ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 6.2832); ctx.fill();
-            }
-            raf = requestAnimationFrame(frame);
-        };
-
-        const start = () => { if (running) return; running = true; last = performance.now(); raf = requestAnimationFrame(frame); };
-        const stop = () => { running = false; cancelAnimationFrame(raf); };
-
-        resize();
-        if ('ResizeObserver' in window) new ResizeObserver(resize).observe(canvas);
-        else window.addEventListener('resize', resize);
-
-        hero.addEventListener('pointermove', (e) => {
-            const rect = canvas.getBoundingClientRect();
-            mouse.x = e.clientX - rect.left;
-            mouse.y = e.clientY - rect.top;
-        });
-        hero.addEventListener('pointerleave', () => { mouse.x = mouse.y = -9999; });
-
-        // Solo anima mientras el hero está en pantalla y la pestaña visible
-        let inView = true;
-        new IntersectionObserver(([entry]) => {
-            inView = entry.isIntersecting;
-            inView && !document.hidden ? start() : stop();
-        }).observe(hero);
-        document.addEventListener('visibilitychange', () => {
-            document.hidden ? stop() : (inView && start());
-        });
-        start();
-    }
-
-    /* 07.d Parallax con el cursor: la foto de fondo y el reel se mueven en
-           sentidos opuestos para dar profundidad */
-    function initHeroParallax() {
-        if (!finePointer || reduceMotion) return;
-        const hero = $('#inicio');
-        if (!hero) return;
-        let tx = 0, ty = 0, cx = 0, cy = 0, raf = 0;
-
-        const tick = () => {
-            cx += (tx - cx) * .08;
-            cy += (ty - cy) * .08;
-            hero.style.setProperty('--px', cx.toFixed(2));
-            hero.style.setProperty('--py', cy.toFixed(2));
-            raf = (Math.abs(tx - cx) > .01 || Math.abs(ty - cy) > .01) ? requestAnimationFrame(tick) : 0;
-        };
-        const kick = () => { if (!raf) raf = requestAnimationFrame(tick); };
-
-        hero.addEventListener('pointermove', (e) => {
-            const r = hero.getBoundingClientRect();
-            tx = ((e.clientX - r.left) / r.width - .5) * 28;
-            ty = ((e.clientY - r.top) / r.height - .5) * 18;
-            kick();
-        });
-        hero.addEventListener('pointerleave', () => { tx = ty = 0; kick(); });
-    }
-
     /* ======================================================================
-       08. INTERACCIONES DE PUNTERO
+       08. SERVICIOS: PANELES QUE SE EXPANDEN
+       En escritorio el panel activo se abre (clic, foco o cursor encima).
+       En móvil y tableta todos los paneles se muestran abiertos.
     ====================================================================== */
-    function initSpotlight() {
-        $$('[data-spotlight]').forEach((el) => {
-            el.addEventListener('pointermove', (e) => {
-                const r = el.getBoundingClientRect();
-                el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-                el.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    function initServices() {
+        const list = $('#svcList');
+        if (!list) return;
+        const items = $$('.svc', list);
+        const set = (it) => {
+            items.forEach((i) => {
+                const on = i === it;
+                i.classList.toggle('is-active', on);
+                const hit = $('.svc-hit', i);
+                if (hit) hit.setAttribute('aria-expanded', String(on));
             });
-        });
-    }
-
-    function initMagnetic() {
-        if (!finePointer || reduceMotion) return;
-        $$('[data-magnetic]').forEach((btn) => {
-            btn.addEventListener('pointermove', (e) => {
-                const r = btn.getBoundingClientRect();
-                const x = e.clientX - (r.left + r.width / 2);
-                const y = e.clientY - (r.top + r.height / 2);
-                btn.style.setProperty('--tx', (x * .2).toFixed(1) + 'px');
-                btn.style.setProperty('--ty', (y * .3).toFixed(1) + 'px');
-            });
-            btn.addEventListener('pointerleave', () => {
-                btn.style.setProperty('--tx', '0px');
-                btn.style.setProperty('--ty', '0px');
-            });
-        });
-    }
-
-    function initTilt() {
-        if (!finePointer || reduceMotion) return;
-        const reel = $('#reel');
-        const frame = $('#reelFrame');
-        if (!reel || !frame) return;
-        reel.addEventListener('pointermove', (e) => {
-            const r = reel.getBoundingClientRect();
-            const x = (e.clientX - r.left) / r.width - .5;
-            const y = (e.clientY - r.top) / r.height - .5;
-            frame.style.setProperty('--ry', (x * 10).toFixed(2) + 'deg');
-            frame.style.setProperty('--rx', (-y * 10).toFixed(2) + 'deg');
-        });
-        reel.addEventListener('pointerleave', () => {
-            frame.style.setProperty('--rx', '0deg');
-            frame.style.setProperty('--ry', '0deg');
+        };
+        items.forEach((it) => {
+            const hit = $('.svc-hit', it);
+            if (hit) {
+                hit.addEventListener('click', () => set(it));
+                hit.addEventListener('focus', () => set(it));
+            }
+            if (finePointer) it.addEventListener('pointerenter', () => { if (desktop.matches) set(it); });
         });
     }
 
@@ -617,7 +445,7 @@
 
         const run = (el) => {
             const target = Number(el.dataset.count) || 0;
-            const duration = 1900;
+            const duration = 2100;
             const t0 = performance.now();
             const tick = (now) => {
                 const t = clamp((now - t0) / duration);
@@ -676,27 +504,49 @@
         };
     }
 
-    /* 10.b El contenido del hero se desvanece y sube al hacer scroll */
-    function heroModule() {
-        const hero = $('#inicio');
-        const inner = $('.hero-inner');
-        if (!hero || !inner || reduceMotion) return null;
-        let heroH = hero.offsetHeight;
-        window.addEventListener('resize', () => { heroH = hero.offsetHeight; });
-        let lastP = -1;
+    /* 10.b El header se oculta al bajar y reaparece al subir */
+    function headerModule() {
+        const header = $('#siteHeader');
+        if (!header) return null;
+        let lastY = 0, hidden = false;
+        const setHidden = (v) => { if (v !== hidden) { hidden = v; header.classList.toggle('is-hidden', v); } };
         return {
-            read: (s) => clamp(s.y / (heroH * .78)),
-            write: (s, p) => {
-                if (p === lastP) return false;
-                lastP = p;
-                inner.style.opacity = p === 0 ? '' : (1 - p).toFixed(3);
-                inner.style.transform = p === 0 ? '' : 'translate3d(0,' + (p * -70).toFixed(1) + 'px,0)';
+            read: (s) => s.y,
+            write: (s, y) => {
+                if (performance.now() < holdHeaderUntil || root.classList.contains('menu-open')) { setHidden(false); lastY = y; return false; }
+                const dy = y - lastY;
+                if (Math.abs(dy) < 6) return false;
+                setHidden(y > 560 && dy > 0);
+                lastY = y;
                 return false;
             }
         };
     }
 
-    /* 10.c Parallax suave en imágenes marcadas con data-parallax */
+    /* 10.c El hero baja más lento que la página y su texto se desvanece */
+    function heroModule() {
+        const hero = $('#inicio');
+        const inner = $('#heroInner');
+        const media = $('#heroMedia');
+        if (!hero || !inner || !media || reduceMotion) return null;
+        let heroH = hero.offsetHeight;
+        window.addEventListener('resize', () => { heroH = hero.offsetHeight; });
+        let lastP = -1;
+        return {
+            read: (s) => clamp(s.y / heroH),
+            write: (s, p) => {
+                if (p === lastP) return false;
+                lastP = p;
+                media.style.transform = p === 0 ? '' : 'translate3d(0,' + (p * heroH * .22).toFixed(1) + 'px,0)';
+                const q = clamp(p / .78);
+                inner.style.opacity = q === 0 ? '' : (1 - q).toFixed(3);
+                inner.style.transform = q === 0 ? '' : 'translate3d(0,' + (q * -64).toFixed(1) + 'px,0)';
+                return false;
+            }
+        };
+    }
+
+    /* 10.d Parallax suave en imágenes marcadas con data-parallax */
     function parallaxModule() {
         if (reduceMotion) return null;
         const items = $$('[data-parallax]').map((img) => ({
@@ -718,9 +568,10 @@
         };
     }
 
-    /* 10.d Manifiesto: las palabras se iluminan al avanzar el scroll */
+    /* 10.e Manifiesto: las palabras se iluminan al avanzar el scroll */
     function manifestoModule() {
         const el = $('#manifestoText');
+        const wrap = $('#manifestoWrap');
         if (!el || reduceMotion) return null;
 
         const text = el.textContent.trim().replace(/\s+/g, ' ');
@@ -751,13 +602,15 @@
         });
         el.append(sr, visual);
 
-        let lit = 0;
+        let lit = 0, lastP = -1;
+        if (wrap) wrap.style.setProperty('--p', '0');
         return {
             read: (s) => {
                 const r = el.getBoundingClientRect();
                 return clamp((s.h * .82 - r.top) / (r.height + s.h * .3));
             },
             write: (s, p) => {
+                if (wrap && Math.abs(p - lastP) > .002) { wrap.style.setProperty('--p', p.toFixed(4)); lastP = p; }
                 const target = Math.round(p * spans.length);
                 if (target === lit) return false;
                 const from = Math.min(lit, target), to = Math.max(lit, target);
@@ -768,37 +621,100 @@
         };
     }
 
-    /* 10.e Timeline del proceso: la línea se dibuja y los pasos se activan */
-    function timelineModule() {
-        const tl = $('#timeline');
-        if (!tl) return null;
-        const items = $$('.t-item', tl);
-        if (reduceMotion) { items.forEach((i) => i.classList.add('is-active')); tl.style.setProperty('--p', '1'); return null; }
-        let lastP = -1;
+    /* 10.f Franja de marca: el texto avanza con el scroll, sin cortes.
+           Se clonan los bloques hasta cubrir el ancho de la pantalla. */
+    function marqueeModule() {
+        const sec = $('#marquee');
+        const track = $('#marqueeTrack');
+        if (!sec || !track || reduceMotion) return null;
+        let setW = 0;
+
+        const measure = () => {
+            const first = track.firstElementChild;
+            if (!first) return;
+            setW = first.getBoundingClientRect().width;
+            while (setW > 0 && (track.children.length - 1) * setW < window.innerWidth + 8 && track.children.length < 10) {
+                track.append(first.cloneNode(true));
+            }
+        };
+        measure();
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+        window.addEventListener('resize', measure);
+
         return {
-            read: () => {
-                const r = tl.getBoundingClientRect();
-                return { top: r.top, height: r.height, tops: items.map((i) => i.getBoundingClientRect().top) };
+            read: (s) => {
+                const r = sec.getBoundingClientRect();
+                return (r.bottom < -40 || r.top > s.h + 40) ? null : s.y;
             },
-            write: (s, d) => {
-                const p = clamp((s.h * .62 - d.top) / d.height);
-                if (Math.abs(p - lastP) > .0015) { tl.style.setProperty('--p', p.toFixed(4)); lastP = p; }
-                items.forEach((it, i) => it.classList.toggle('is-active', d.tops[i] < s.h * .66));
+            write: (s, y) => {
+                if (y === null || !setW) return false;
+                track.style.transform = 'translate3d(' + (-((y * .55) % setW)).toFixed(1) + 'px,0,0)';
                 return false;
             }
         };
     }
 
-    /* 10.f Etapas de obra: en escritorio la sección queda fijada y el scroll
+    /* 10.g Sellos de marca: el anillo con letras gira con el scroll y el
+           emblema central queda fijo */
+    function sealsModule() {
+        if (reduceMotion) return null;
+        const items = $$('.seal').map((el) => ({
+            el, ring: $('.seal-ring', el), dir: el.classList.contains('badge') ? -1 : 1
+        })).filter((it) => it.ring);
+        if (!items.length) return null;
+        return {
+            read: (s) => items.map((it) => {
+                const r = it.el.getBoundingClientRect();
+                return (r.bottom < -60 || r.top > s.h + 60) ? null : true;
+            }),
+            write: (s, vis) => {
+                vis.forEach((v, i) => {
+                    if (!v) return;
+                    items[i].ring.style.transform = 'rotate(' + (s.y * .12 * items[i].dir).toFixed(2) + 'deg)';
+                });
+                return false;
+            }
+        };
+    }
+
+    /* 10.h Proceso: la línea se dibuja y cada paso se enciende al llegar */
+    function stepsModule() {
+        const box = $('#steps');
+        if (!box) return null;
+        const items = $$('.step', box);
+        if (reduceMotion) { items.forEach((i) => i.classList.add('is-active')); box.style.setProperty('--p', '1'); return null; }
+        let lastP = -1;
+        return {
+            read: () => {
+                const r = box.getBoundingClientRect();
+                return { top: r.top, height: r.height, tops: items.map((i) => i.getBoundingClientRect().top) };
+            },
+            write: (s, d) => {
+                let p;
+                if (desktop.matches) {
+                    p = clamp((s.h * .86 - d.top) / (s.h * .5));
+                    items.forEach((it, i) => it.classList.toggle('is-active', p >= i / items.length * .96 + .01));
+                } else {
+                    p = clamp((s.h * .62 - d.top) / d.height);
+                    items.forEach((it, i) => it.classList.toggle('is-active', d.tops[i] < s.h * .66));
+                }
+                if (Math.abs(p - lastP) > .0015) { box.style.setProperty('--p', p.toFixed(4)); lastP = p; }
+                return false;
+            }
+        };
+    }
+
+    /* 10.i Etapas de obra: en escritorio la sección queda fijada y el scroll
            avanza de etapa en etapa (cada foto se descubre con un recorte).
            En móvil son tarjetas apiladas normales. */
     function stagesModule() {
         const section = $('#etapas');
         const list = $('#stageList');
+        const visual = $('#stagesVisual');
         if (!section || !list) return null;
         const items = $$('.stage', list);
+        const imgs = visual ? $$('.stage-img', visual) : [];
         const n = items.length;
-        const desktop = window.matchMedia('(min-width: 1024px)');
         let pinned = false;
         let idx = -1;
         let lastP = -1;
@@ -808,7 +724,8 @@
             section.classList.toggle('is-pinned', pinned);
             if (!pinned) {
                 items.forEach((it) => it.classList.remove('is-active', 'is-shown'));
-                list.style.removeProperty('--p');
+                imgs.forEach((im, i) => im.classList.toggle('is-shown', i === 0));
+                if (visual) visual.style.removeProperty('--p');
                 idx = -1; lastP = -1;
             }
         };
@@ -836,8 +753,12 @@
                         it.classList.toggle('is-active', i === idx);
                         it.classList.toggle('is-shown', i <= idx);
                     });
+                    imgs.forEach((im, i) => {
+                        im.classList.toggle('is-active', i === idx);
+                        im.classList.toggle('is-shown', i <= idx);
+                    });
                 }
-                if (Math.abs(p - lastP) > .002) { list.style.setProperty('--p', p.toFixed(4)); lastP = p; }
+                if (visual && Math.abs(p - lastP) > .002) { visual.style.setProperty('--p', p.toFixed(4)); lastP = p; }
                 return false;
             }
         };
@@ -992,7 +913,7 @@
         const summary = $('#quoteSummary');
 
         const labelContinue = nextLabel.innerHTML;
-        const labelSend = icon('whatsapp-logo-fill') + ' Enviar mi proyecto por WhatsApp';
+        const labelSend = icon('whatsapp-logo-fill') + ' Enviar por WhatsApp';
 
         let cur = 0;
         let busy = false;
@@ -1105,9 +1026,15 @@
             status.textContent = '';
 
             // WhatsApp se abre dentro del gesto del usuario para que el navegador no bloquee la ventana
-            const url = waLink(buildMessage());
-            const win = window.open(url, '_blank', 'noopener');
-            if (!win) window.location.href = url;
+            // (un enlace con target _blank evita que window.open con "noopener", que siempre devuelve null,
+            //  termine navegando también la página actual)
+            const link = document.createElement('a');
+            link.href = waLink(buildMessage());
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            document.body.append(link);
+            link.click();
+            link.remove();
 
             next.classList.add('is-loading');
             next.setAttribute('aria-busy', 'true');
@@ -1158,39 +1085,38 @@
         safe(initSmoothScroll, 'smoothScroll');
         safe(initContactLinks, 'contactLinks');
         safe(initSplit, 'split');                       // antes del revelado: crea las palabras
+        safe(initImages, 'images');
         safe(initAnchors, 'anchors');
         safe(initHeader, 'header');
         safe(initNavPill, 'navPill');
         safe(initMenu, 'menu');
         safe(initActiveNav, 'activeNav');
+        safe(initServices, 'services');
         safe(initFaq, 'faq');
         safe(initGallery, 'gallery');
         safe(initQuote, 'quote');
         safe(initReveal, 'reveal');
-        safe(initSpotlight, 'spotlight');
-        safe(initMagnetic, 'magnetic');
-        safe(initTilt, 'tilt');
-        safe(initHeroParallax, 'heroParallax');
         safe(initCounters, 'counters');
 
         const modules = [
             safe(progressModule, 'progress'),
+            safe(headerModule, 'headerScroll'),
             safe(heroModule, 'heroScroll'),
             safe(parallaxModule, 'parallax'),
             safe(manifestoModule, 'manifesto'),
-            safe(timelineModule, 'timeline'),
+            safe(marqueeModule, 'marquee'),
+            safe(sealsModule, 'seals'),
+            safe(stepsModule, 'steps'),
             safe(stagesModule, 'stages')
         ].filter(Boolean);
         createLoop(modules);
 
         initLoader().then(() => {
-            // El telón del loader empieza a abrirse; el hero entra un instante después
+            // El telón del loader empieza a subir; el hero entra mientras se abre
             setTimeout(() => {
                 safe(playHeroIntro, 'heroIntro');
                 safe(initRotator, 'rotator');
-                safe(initReel, 'reel');
-                safe(initEmbers, 'embers');
-            }, 350);
+            }, reduceMotion ? 0 : 750);
             safe(initWaFloat, 'waFloat');
 
             if (location.hash) {
