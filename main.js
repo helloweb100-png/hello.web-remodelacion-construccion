@@ -39,8 +39,8 @@
     ====================================================================== */
     const CONFIG = {
         brand: 'Construcciones Martinez',
-        whatsapp: '520000000000',        // país + número, sin "+" ni espacios (ej. 5214421234567)
-        phoneDisplay: '(000) 000 0000',  // cómo se muestra el teléfono en la página
+        whatsapp: '5214464949247',       // país + número, sin "+" ni espacios (WhatsApp en México usa 521 + 10 dígitos)
+        phoneDisplay: '(446) 494 9247',  // cómo se muestra el teléfono en la página
         email: 'contacto@tudominio.com'
     };
 
@@ -80,16 +80,14 @@
             a.target = '_blank';
             a.rel = 'noopener noreferrer';
         });
-        $$('[data-tel]').forEach((a) => { a.href = 'tel:+' + CONFIG.whatsapp; });
+        // Para llamadas se usa +52 y los 10 dígitos (sin el "1" que solo exige WhatsApp)
+        $$('[data-tel]').forEach((a) => { a.href = 'tel:+52' + CONFIG.whatsapp.slice(-10); });
         $$('[data-phone-text]').forEach((el) => { el.textContent = CONFIG.phoneDisplay; });
         $$('[data-email]').forEach((a) => { a.href = 'mailto:' + CONFIG.email; });
         $$('[data-email-text]').forEach((el) => { el.textContent = CONFIG.email; });
         const year = $('#year');
         if (year) year.textContent = new Date().getFullYear();
 
-        if (CONFIG.whatsapp === '520000000000') {
-            console.warn('[' + CONFIG.brand + '] Falta configurar el número real de WhatsApp en main.js (CONFIG.whatsapp).');
-        }
     }
 
     /* ======================================================================
